@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   get 'sign_up_artist' => 'pages#sign_up_artist'
 
-  devise_for :users #, controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}@
+ #, controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}@
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy]  do
     resources :proposals, only: [:index, :show, :new, :create] do

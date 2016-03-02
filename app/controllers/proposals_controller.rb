@@ -5,9 +5,9 @@ class ProposalsController < ApplicationController
   end
 
   def create
-     @proposal = Proposal.new(proposal_params)
+     @proposal = current_user.proposal.new(proposal_params)
     if @proposal.save
-      redirect_to new_proposal_path
+      redirect_to root_path
     else
       # Rails.logger.info(@race.errors.full_messages)
       render :new
@@ -29,4 +29,8 @@ class ProposalsController < ApplicationController
 
   def destroy
   end
+
+def proposal_params
+  params.require(:proposal).permit(:project_id, :content, :user_id, photos: [])
+end
 end

@@ -7,7 +7,9 @@
     <h2>Suggest a proposal concerning "this project" </h2>
 
     <%= simple_form_for @proposal do |f| %>
-      <%= f.button :submit, class: "btn btn-success btn-block" %>
+      <%= f.input :photos, as: :attachinary %>
+
+      <%= f.button :submit, class: "btn btn-success btn-block"%>
     <% end %>
 
     </div>

@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
+  get "me" => "pages#me"
+
   root to: 'pages#home'
+
+  get 'sign_up_artist' => 'pages#sign_up_artist'
 
   devise_for :users #, controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}@
 

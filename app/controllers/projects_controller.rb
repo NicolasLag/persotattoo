@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    if session[:project]
+      @project = Project.new(session[:project])
+      @project.valid?
+    end
   end
 
   def create

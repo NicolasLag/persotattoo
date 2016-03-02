@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get "me" => "pages#me"
 
   root to: 'pages#home'
 

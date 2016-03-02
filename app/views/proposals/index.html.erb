@@ -1,2 +1,13 @@
 <h1>Proposals#index</h1>
 <p>Find me in app/views/proposals/index.html.erb</p>
+
+<h1><%="Tu as reçu #{current_user.proposals.count} propositions de tatoo"%></h1>
+ <%current_user.proposals.each do |p| %>
+ <br>
+  <%= "Tatouage proposé par #{p.user.first_name}"%> <br>
+  <% p.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %> <br>
+  <%=p.content%>
+<% end %>
+

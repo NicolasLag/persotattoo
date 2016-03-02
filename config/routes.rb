@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   devise_for :users #, controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}@
 
-  resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-
-  resources :proposals, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-      resources :reviews, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy]  do
+    resources :proposals, only: [:index, :show, :new, :create] do
+      resources :reviews, only: [:index,:new, :create, :destroy]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

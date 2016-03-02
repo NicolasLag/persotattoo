@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
 
-  before_action :set_proposal, only [ :show, :edit, :update, :destroy]
+  before_action :set_proposal, only: [:show, :edit, :update, :destroy]
 
   def index
     @proposals = Proposal.all
@@ -11,12 +11,14 @@ class ProposalsController < ApplicationController
   end
 
   def new
+    @project = Project.find(params[:project_id])
     @proposal = Proposal.new
   end
 
   def create
-     @proposal = current_user.new(proposal_params)
-     # @proposal = current_user.proposal.new(proposal_params)
+     # @proposal = Proposal.new(proposal_params)
+     @proposal = current_user.proposals.new(proposal_params)
+     @proposal.project = Project.find(params[:project_id])
     if @proposal.save
 
       redirect_to root_path

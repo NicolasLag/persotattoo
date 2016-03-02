@@ -16,6 +16,22 @@ ActiveRecord::Schema.define(version: 20160302141046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attachinary_files", force: :cascade do |t|
+    t.integer  "attachinariable_id"
+    t.string   "attachinariable_type"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+
   create_table "projects", force: :cascade do |t|
     t.integer  "price"
     t.string   "style"
@@ -38,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160302141046) do
     t.integer  "project_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.text     "content"
   end
 
   add_index "proposals", ["project_id"], name: "index_proposals_on_project_id", using: :btree

@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
 
+  get 'projects/index'
+
+  get 'projects/create'
+
+  get 'projects/new'
+
+  get 'projects/edit'
+
+  get 'projects/show'
+
+  get 'projects/update'
+
+  get 'projects/destroy'
+
   get "me" => "pages#me"
 
   root to: 'pages#home'
+
+  get 'sign_up_artist' => 'pages#sign_up_artist'
 
   devise_for :users #, controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}@
 

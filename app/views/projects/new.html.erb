@@ -1,0 +1,20 @@
+<div class="well">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+    <h1>Décrivez votre projet</h1>
+    <h2>Lancez votre concours pour obtenir votre tatouage personnalisé</h2>
+
+    <%= simple_form_for @project do |f| %>
+      <%= f.input :title, label: "Titre", placeholder: "Ex. : une chouette sur une branche de bambou" %>
+      <%= f.input :description, label: false, placeholder: "Ex. : la chouette doit être le sujet principal, avec des yeux transpersants. La branche de bambou doit comporter quelques feuilles, de style moderne." %>
+      <%= f.input :style, placeholder: "Style", collection: ["Japonais", "Mots / Calligraphie", "Dessin", "Graphique / abstrait", "Tribal / Maori", "Bio-méchanique", "Dotwork-Linework / Mandala", "New school / Old school", "Watercolor"], selected: "Japonais" %>
+      <%= f.input :height %>
+      <%= f.input :width %>
+      <%= f.input :price, collection: ["99", "199", "299"] %>
+      <%= f.button :submit, "Soumettre mon projet", class: "btn btn-success btn-block" %>
+    <% end %>
+
+    </div>
+  </div>
+</div>

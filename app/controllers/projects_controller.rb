@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: :new
+  before_action :find_project, only: [:show]
 
   def index
   end
@@ -31,6 +32,12 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def find_project
+    @project = Project.find(params[:id])
   end
 
   def project_params

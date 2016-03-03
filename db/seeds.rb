@@ -59,6 +59,7 @@ User.create!({
 
 project_1 = Project.create({
     user: flo,
+    title: "Triangle de penrose",
     description: "Tatouage japonais autour de mon triangle de penrose",
     style: "Nature",
     price: 150
@@ -66,6 +67,7 @@ project_1 = Project.create({
 
 project_2 = Project.create({
     user: louis,
+    title: "Dessin japonais cuisse",
     description: "Je veux ce dessin sur ma cuisse",
     style: "Japonais",
     price: 300

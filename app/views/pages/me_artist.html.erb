@@ -1,5 +1,23 @@
-ARTIST /me dashboard
+<%= link_to '<<< Propositions', me_artist_proposals_path %>
 
-<% current_user.proposals.each do |proposal| %>
-  <h2>  <%= proposal.project %> </h2>
-<% end %>
+<div class="container">
+  <h1>Tous les projets</h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+
+      <% Project.all.each do |project| %>
+        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+        <div class="card-description">
+          <h2><strong><%= project.title %></strong></h2>
+          <h3><%= project.user.first_name %></h3>
+          <h2><span class="label label-success"><%= project.price %>€</span></h2>
+          <p><i><strong><%= project.created_at %></strong></i></p>
+        </div>
+        <%= link_to "Proposal", new_project_proposal_path(project), {class: "card-link"} %>
+        </div>
+
+      <% end %>
+
+      </div>
+    </div>
+</div>

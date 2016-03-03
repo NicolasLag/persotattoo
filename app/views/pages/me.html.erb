@@ -1,5 +1,32 @@
-CLIENT /me dashboard
+<div class="container">
+  <h1>Mes projets</h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
 
-<% current_user.projects.each do |project| %>
-  <h2>  <%= project.title %> </h2>
-<% end %>
+      <% current_user.projects.each do |project| %>
+        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+        <div class="card-description">
+          <h3><%= project.title %></h3>
+          <p><i><%= project.style %></i></p>
+          <h2><span class="label label-success"><%= pluralize(project.proposals.count, 'proposition') %></span></h2>
+        </div>
+        <%= link_to "Project", project_path(project), {class: "card-link"} %>
+        </div>
+
+      <% end %>
+
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+
+      <% current_user.proposals.each do |proposal| %>
+        <h2>  <%= proposal.project %> </h2>
+      <% end %>
+
+      </div>
+    </div>
+</div>

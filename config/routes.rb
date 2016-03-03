@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'sign_up_artist' => 'pages#sign_up_artist'
 
   get 'me_artist' => 'pages#me_artist'
+  get 'me_artist_proposals' => 'pages#me_artist_proposals'
 
   devise_for :users , controllers: { registrations: "users/registrations" }
 

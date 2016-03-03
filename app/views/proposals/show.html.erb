@@ -1,7 +1,8 @@
-<h1>Proposals#show</h1>
-<p>Find me in app/views/proposals/show.html.erb</p>
-
-
+<%= link_to '<<< Toutes mes propositions', me_artist_proposals_path %>
+<h1>Client's name: <strong><%= @proposal.project.user.first_name %></strong></h1>
+<br>
+<%= @proposal.content %>
+<br>
 <% @proposal.photos.each do |photo| %>
   <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>

@@ -8,6 +8,7 @@ class ProposalsController < ApplicationController
 
 
   def show
+    @project = current_user.proposals.first
   end
 
   def new
@@ -21,7 +22,7 @@ class ProposalsController < ApplicationController
      @proposal.project = Project.find(params[:project_id])
     if @proposal.save
 
-      redirect_to root_path
+      redirect_to me_artist_path
     else
       # Rails.logger.info(@race.errors.full_messages)
       render :new

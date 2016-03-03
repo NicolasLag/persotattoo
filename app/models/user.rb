@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :proposals, dependent: :destroy
   has_many :received_proposals, through: :projects, source: :proposals
+
+  acts_as_messageable
+
+  def mailboxer_email(object)
+    email
+  end
   # validates :first_name, :last_name, presence: true
   #
   def self.find_for_facebook_oauth(auth)

@@ -1,0 +1,5 @@
+ARTIST /me dashboard
+
+<% current_user.proposals.each do |proposal| %>
+  <h2>  <%= proposal.project %> </h2>
+<% end %>

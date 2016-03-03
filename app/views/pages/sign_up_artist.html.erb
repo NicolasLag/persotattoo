@@ -1,7 +1,7 @@
 <h1>Sign up Artist</h1>
 
 
-<%= simple_form_for(User.new, as: :user, url: user_registration_path) do |f| %>
+<%= simple_form_for(@user, as: :user, url: user_registration_path) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

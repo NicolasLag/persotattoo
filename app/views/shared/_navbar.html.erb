@@ -18,13 +18,21 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <% if current_user.artist == false %>
+        <%= link_to "#{current_user.first_name}", me_path, class: "navbar-wagon-item navbar-wagon-link" %> (client)
+      <% else %>
+        <%= link_to "#{current_user.first_name}", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %> (artist)
+      <% end %>
+
       <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <!-- conversations_path -->
+      <%= link_to conversations_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
+          <div class="badge badge-blue">XX</div>
         </div>
       <% end %>
+
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -54,7 +62,6 @@
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
     <% end %>
 
     <!-- Button (call-to-action) -->

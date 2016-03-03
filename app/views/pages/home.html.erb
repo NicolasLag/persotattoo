@@ -1,6 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Bienvenue chez PersoTattoo</h1>
 
-<%= link_to "Obtenir mon tattoo personnalisé", new_project_path %>
-|
-<%= link_to "Créer mon compte artiste", sign_up_artist_path %>
+
+<% if user_signed_in? %>
+
+    <% if current_user.artist == false %>
+      <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% else %>
+      <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+    |
+    <% if current_user.artist == false %>
+      <%= link_to "Créer mon compte artiste", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% else %>
+      <%= link_to "Créer mon compte artiste", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to "Obtenir mon tattoo personnalisé", new_project_path %>
+    |
+    <%= link_to "Créer mon compte artiste", sign_up_artist_path %>
+
+<% end %>

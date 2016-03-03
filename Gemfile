@@ -12,15 +12,18 @@ gem 'cloudinary'
 gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
+gem 'mailboxer'
 
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
+gem 'will_paginate-bootstrap'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
+gem 'gravatar_image_tag'
 
 group :development, :test do
   gem 'binding_of_caller'

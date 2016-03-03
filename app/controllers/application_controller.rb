@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, unless: :devise_controller?
 
-  def authenticate_user!
+  def authenticate_user!(*arg)
     session[:project] = Project.new(project_params) if params[:project]
     redirect_to new_user_registration_path unless user_signed_in?
   end

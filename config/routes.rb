@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   get "me" => "pages#me"
+  get "me_profile" => "pages#me_profile"
 
   root to: 'pages#home'
 

@@ -9,13 +9,23 @@
 					<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 					<p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
 					<% end %>
+          <h3>Modifications de compte</h3>
 					<%= f.input :first_name, autofocus: true %>
         	<%= f.input :last_name, autofocus: true %>
         	<%= f.input :presentation, autofocus: true %>
         	<%= f.input :phone_number, autofocus: true %>
+          <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+
+          <h3>Adresse de Facturation</h3>
+          <%= f.input :address_street, autofocus: true %>
+          <%= f.input :address_city, autofocus: true %>
+          <%= f.input :address_postal_code, autofocus: true %>
+          <h3>Visuels</h3>
         	<%= f.input :url , autofocus: true %>
-					<%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-					<%= f.button :submit, "Save", class: "btn btn-success btn-block" %>
+          <%= f.input :portfolio_photos, as: :attachinary %>
+        	<%= f.input :avatar, as: :attachinary %>
+				  <%= f.button :submit, "Save", class: "btn btn-success btn-block"%>
+
 					<% end %>
 				</div>
 			</div>
@@ -31,6 +41,7 @@
 					<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 					<p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
 					<% end %>
+					<%= f.input :email, autofocus: true %>
 					<%= f.input :first_name, autofocus: true %>
         	<%= f.input :last_name, autofocus: true %>
         	<%= f.input :address_street, autofocus: true %>
@@ -38,9 +49,12 @@
         	<%= f.input :address_postal_code, autofocus: true %>
         	<%= f.input :presentation, autofocus: true %>
         	<%= f.input :phone_number, autofocus: true %>
+        	<%= f.input :photos, as: :attachinary %>
         	<%= f.input :gender, collection: ["male", "female"], autofocus: true %>
 					<%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-					<%= f.button :submit, "Save", class: "btn btn-success btn-block" %>
+					<%= f.button :submit, "Save", class: "btn btn-success btn-block"
+           %>
+
 					<% end %>
 				</div>
 			</div>

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  has_attachment :avatar
+  has_attachments :portfolio_photos, maximum: 30
   has_many :projects, dependent: :destroy
   has_many :proposals, dependent: :destroy
   has_many :received_proposals, through: :projects, source: :proposals

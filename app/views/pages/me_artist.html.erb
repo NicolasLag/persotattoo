@@ -2,24 +2,65 @@
 <br>
 <%= link_to '<<< Propositions', me_artist_proposals_path %>
 
-<div class="container">
-  <h1>Tous les projets</h1>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
 
-      <% Project.all.each do |project| %>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
-        <div class="card-description">
-          <h2><strong><%= project.title %></strong></h2>
-          <h3><%= project.user.first_name %></h3>
-          <h2><span class="label label-success"><%= project.price %>€</span></h2>
-          <p><i><strong><%= project.created_at %></strong></i></p>
-        </div>
-        <%= link_to "Proposal", new_project_proposal_path(project), {class: "card-link"} %>
-        </div>
 
+<div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+      <% if @current_user.avatar? %>
+          <%= cl_image_tag current_user.avatar.path, class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
       <% end %>
+      <h1><%= current_user.first_name%> <%= current_user.last_name%></h1>
 
-      </div>
     </div>
+</div>
+
+<!-- LA PARTIE TAB -->
+<ul class="nav nav-tabs">
+  <li role="presentation" class="tab active">
+    <a data-target="#projects" href="#projects">
+      Projets
+    </a>
+  </li>
+  <li role="presentation" class="tab">
+    <a data-target="#portfolio" href="#portfolio">
+      Portfolio
+    </a>
+  </li>
+</ul>
+
+
+<!-- LA PARTIE PROJETS  -->
+<div class="container">
+  <div class="tab-content" data-target="#projects" id="projects">
+    <h1>Tous les projets</h1>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+
+        <% Project.all.each do |project| %>
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+          <div class="card-description">
+            <h2><strong><%= project.title %></strong></h2>
+            <h3><%= project.user.first_name %></h3>
+            <h2><span class="label label-success"><%= project.price %>€</span></h2>
+            <p><i><strong><%= project.created_at %></strong></i></p>
+          </div>
+          <%= link_to "Proposal", new_project_proposal_path(project), {class: "card-link"} %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- LA PARTIE PORTFOLIO  -->
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <div class="tab-content hidden" data-target="#portfolio" id="portfolio">
+        <h1>Mon Portfolio</h1>
+        <% if @current_user.portfolio_photos?%>
+          <% @current_user.portfolio_photos.each do |photo| %>
+          <%= cl_image_tag photo.path, height: 150, width: 100, crop: :fill %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
 </div>

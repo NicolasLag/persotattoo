@@ -1,10 +1,12 @@
 <h1>Mon Dashboard</h1>
 
-<%= link_to "<<< Modifier profil", edit_user_registration_path%>
+<%= link_to "<<< Modifier profil", edit_user_registration_path, class:"btn btn-primary" %>
 <br>
-<%= link_to "<<< Créer un projet", new_project_path%>
 <br>
-<%= link_to '<<< Mes messages', conversations_path %>
+<%= link_to "<<< Créer un projet", new_project_path, class:"btn btn-success"%>
+<br>
+<br>
+<%= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
 
 <div class="container">
   <h1>Mes projets</h1>

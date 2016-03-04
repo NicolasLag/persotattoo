@@ -49,7 +49,7 @@
         	<%= f.input :address_postal_code, autofocus: true %>
         	<%= f.input :presentation, autofocus: true %>
         	<%= f.input :phone_number, autofocus: true %>
-        	<%= f.input :photos, as: :attachinary %>
+        	<%= f.input :avatar, as: :attachinary %>
         	<%= f.input :gender, collection: ["male", "female"], autofocus: true %>
 					<%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
 					<%= f.button :submit, "Save", class: "btn btn-success btn-block"

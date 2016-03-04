@@ -11,7 +11,7 @@
       <%= f.input :style, placeholder: "Style", collection: ["Japonais", "Mots / Calligraphie", "Dessin", "Graphique / abstrait", "Tribal / Maori", "Bio-méchanique", "Dotwork-Linework / Mandala", "New school / Old school", "Watercolor"], selected: "Japonais" %>
       <%= f.input :height %>
       <%= f.input :width %>
-      <%= f.input :photos, label: 'Inspiration', as: :attachinary %>
+      <%#= f.input :photos, label: 'Inspiration', as: :attachinary %>
       <%= f.input :price, collection: ["99", "199", "299"] %>
       <%= f.button :submit, "Soumettre mon projet", class: "btn btn-success btn-block" %>
     <% end %>

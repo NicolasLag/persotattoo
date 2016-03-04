@@ -8,7 +8,7 @@ User.destroy_all
 nicolas = User.create!({
     first_name: "Nicolas",
     last_name: "Lagarde",
-    email: "lagardenicolas@gmail.com",
+    email: "nicolas@gmail.com",
     password: "123soleil",
     artist: true
   })
@@ -77,7 +77,13 @@ project_2 = Project.create({
 
 proposal_1 = Proposal.create({
     user: nicolas,
-    project: project_1
+    project: project_1,
+    validated_at: DateTime.now
+  })
+
+proposal_1 = Proposal.create({
+    user: nicolas,
+    project: project_2
   })
 
 Proposal.create({

@@ -1,4 +1,9 @@
 <% if resource.artist %>
+  <%= link_to "<<< Voir les projets", me_artist_path%>
+  <br>
+  <%= link_to '<<< Propositions', me_artist_proposals_path %>
+  <br>
+  <%= link_to '<<< Mes messages', conversations_path %>
 	<h1>vous êtes un artiste</h1>
 	<div class="well">
 			<div class="container-fluid">
@@ -31,6 +36,11 @@
 			</div>
 		</div>
 <% else %>
+  <%= link_to "<<< Voir mes projets", me_path%>
+  <br>
+  <%= link_to "<<< Créer un projet", new_project_path%>
+  <br>
+  <%= link_to '<<< Mes messages', conversations_path %>
 	<h1>Modifier votre profil client </h1>
 		<div class="well">
 			<div class="container-fluid">

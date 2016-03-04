@@ -5,11 +5,8 @@ class ConversationsController < ApplicationController
   before_action :get_box, only: [:index]
   before_action :get_conversation, except: [:index, :empty_trash]
 
-  def index
-    @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
-  end
-
   def show
+    mark_as_read
   end
 
   def reply
@@ -26,7 +23,7 @@ class ConversationsController < ApplicationController
     else
       @conversations = @mailbox.trash
     end
-
+    count_msg
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
   end
 
@@ -53,7 +50,11 @@ class ConversationsController < ApplicationController
   def mark_as_read
     @conversation.mark_as_read(current_user)
     flash[:success] = 'The conversation was marked as read.'
-    redirect_to conversations_path
+    # redirect_to conversations_path
+  end
+
+  def count_msg
+    @unread_count = @mailbox.inbox(:unread => true).count(:id, :distinct => true).to_s if current_user
   end
 
   private

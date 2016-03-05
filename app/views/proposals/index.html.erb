@@ -1,25 +1,20 @@
-<h1>Toutes les propositions pour ton project </h1>
+  <div class="container">
+    <div class="row">
 
-
-
-
-<h2><%="Tu as reçu #{current_user.projects.first.proposals.count} propositions de tatoo"%></h2>
-<div class="container">
-  <div class="row">
-
-    <% current_user.projects.each do |p| %>
-    <% p.proposals.each do |c| %>
-    <li>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
-       <div class="card-description">
-        <%= User.find(c.user_id).first_name%>
-        <%=  c.content %>
-    </li>
-      <% end %>
-      <% end %>
+      <% current_user.projects.each do |p| %>
+      <% p.proposals.each do |c| %>
+      <li>
+        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+         <div class="card-description">
+          <h2>
+          <%="proposition de  #{User.find(c.user_id).first_name}"%>
+          </h2>
+          <%=  "Details :  #{c.content}" %>
+      </li>
+        <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
 
 

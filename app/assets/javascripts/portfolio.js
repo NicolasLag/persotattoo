@@ -1,2 +1,6 @@
- $( '.swipebox' ).swipebox();
 
+;( function( $ ) {
+
+  $( '.swipebox' ).swipebox();
+
+} )( jQuery );

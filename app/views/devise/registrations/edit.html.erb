@@ -5,8 +5,27 @@
   <br>
   <%= link_to '<<< Mes messages', conversations_path %>
 	<h1>vous êtes un artiste</h1>
-	<div class="well">
-			<div class="container-fluid">
+
+<!-- LA PARTIE TAB -->
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="tab active">
+    <a data-target="#edit" href="#edit">
+      Modifier le profil
+    </a>
+  </li>
+  <li role="presentation" class="tab">
+    <a data-target="#portfolio" href="#portfolio">
+      Portfolio
+    </a>
+  </li>
+</ul>
+
+
+
+<div class="tab-content" data-target="#edit" id="edit">
+  <div class="well">
+			<div class="container">
 				<div class="col-xs-12 col-md-6 col-md-offset-3">
 					<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 					<%= f.error_notification %>
@@ -26,15 +45,35 @@
           <%= f.input :address_city, autofocus: true %>
           <%= f.input :address_postal_code, autofocus: true %>
           <h3>Visuels</h3>
-        	<%= f.input :url , autofocus: true %>
+        	<%= f.input :url, label: "Votre site internet", autofocus: true %>
           <%= f.input :portfolio_photos, as: :attachinary %>
         	<%= f.input :avatar, as: :attachinary %>
 				  <%= f.button :submit, "Save", class: "btn btn-success btn-block"%>
 
 					<% end %>
+          <h3>Supprimer mon compte</h3>
+            <p>Mécontent <%= link_to "Supprimer Mon Compte", registration_path(resource_name), data: { confirm: "Vous êtes sûr?" }, method: :delete %></p>
 				</div>
 			</div>
 		</div>
+</div>
+
+
+
+ <!-- LA PARTIE PORTFOLIO  -->
+ <div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <div class="tab-content hidden" data-target="#portfolio" id="portfolio">
+      <h1>Mon Portfolio</h1>
+          <% if @current_user.portfolio_photos?%>
+          <% @current_user.portfolio_photos.each do |photo| %>
+          <%= cl_image_tag photo.path, height: 100, width: 100, crop: :fill%>
+          <% end %>
+          <% end %>
+    </div>
+  </div>
+</div>
+
 <% else %>
   <%= link_to "<<< Voir mes projets", me_path%>
   <br>
@@ -70,10 +109,5 @@
 			</div>
 		</div>
 <% end %>
-
-
-<h3>Supprimer mon compte</h3>
-
-<p>Mécontent <%= link_to "Supprimer Mon Compte", registration_path(resource_name), data: { confirm: "Vous êtes sûr?" }, method: :delete %></p>
 
 <%= link_to "Retour à mon profil", :back %>

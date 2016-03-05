@@ -23,6 +23,8 @@
         <%= link_to "Project", project_path(project), {class: "card-link"} %>
       </div>
       <% if project.proposals.count > 0 %>
+
+
       <h1>Liste des propositions</h1>
 
         <%project.proposals.each do |p| %>
@@ -39,3 +41,8 @@
     <% end %>
   </div>
 </div>
+
+
+
+
+

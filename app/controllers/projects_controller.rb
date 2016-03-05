@@ -41,6 +41,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params[:project].permit(:title, :description, :style, :height, :width, :price)
+    params[:project].permit(:title, :description, :style, :height, :width, :price, photos: [])
   end
 end

@@ -67,7 +67,9 @@
         <h1>Mon Portfolio</h1>
           <% if @current_user.portfolio_photos?%>
           <% @current_user.portfolio_photos.each do |photo| %>
-          <%= cl_image_tag photo.path, height: 100, width: 100, crop: :fill%>
+            <%= link_to cl_image_path(photo.path), class:"swipebox" do %>
+              <%= cl_image_tag photo.path, height: 100, width: 100, crop: :fill %>
+            <% end %>
           <% end %>
           <% end %>
 

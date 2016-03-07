@@ -2,13 +2,14 @@
     <div class="row">
 
       <% @proposals.each do |p| %>
-      <li>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+        <br>
+        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.amazingtattooideas.com/wp-content/uploads/2015/12/geometric-lines-chest-tattoo.jpg');">
          <div class="card-description">
           <h2>
             <%="proposition de  #{p.user.first_name}"%>
           </h2>
           <%=  "Details :  #{p.content}" %>
+
 
           <h3><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#proposal-<%= p.id %>">
             Choisir cette proposition
@@ -25,7 +26,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title" id="myModalLabel">Un titre</h4>
+            <h4 class="modal-title" id="myModalLabel">Choisir cet artiste</h4>
           </div>
           <div class="modal-body">
           </div>
@@ -41,7 +42,7 @@
     </div>
 
 
-  </li>
+
   <% end %>
 
 </div>

@@ -17,24 +17,23 @@ class ProposalsController < ApplicationController
   end
 
   def create
-     # @proposal = Proposal.new(proposal_params)
      @proposal = current_user.proposals.new(proposal_params)
      @proposal.project = Project.find(params[:project_id])
     if @proposal.save
 
       redirect_to me_artist_path
     else
-      # Rails.logger.info(@race.errors.full_messages)
       render :new
     end
   end
 
 
-  def edit
-  end
-
-
   def update
+    @proposal.update(validated_at: DateTime.now)
+    respond_to do |format|
+      format.html { } # TODO
+      format.js
+    end
   end
 
   def destroy
@@ -47,6 +46,6 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:project_id, :content, :user_id, photos: [])
+    params.require(:proposal).permit(:project_id, :content, :validated_at, :user_id, photos: [])
   end
 end

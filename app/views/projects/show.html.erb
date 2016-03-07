@@ -6,6 +6,6 @@
   <p><%= @project.style %></p>
   <p><%= @project.height %></p>
   <p><%= @project.width %></p>
-  <p><strong><%= @project.price %>€</strong></p>
+  <p><strong>Amount: <%= humanized_money_with_symbol(@project.price) %></strong></p>
 
 </div>

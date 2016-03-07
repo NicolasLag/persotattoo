@@ -1,24 +1,32 @@
-<h1>Bienvenue chez PersoTattoo</h1>
+<!-- Banner with search buttons  -->
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://www.dotstolines.com/wp-content/uploads/2014/10/DotsToLines029.jpg?c93722');">
+  <div class="banner-content">
+    <h1>Bienvenue chez PersoTattoo</h1>
+    <p>Enjoy worldwide quality.</p>
+    <!-- <a class="btn btn-primary btn-lg">GET IT</a> -->
 
 
-<% if user_signed_in? %>
 
-    <% if current_user.artist == false %>
-      <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% else %>
-      <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if user_signed_in? %>
+
+        <% if current_user.artist == false %>
+          <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% else %>
+          <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end %>
+        |
+        <% if current_user.artist == false %>
+          <%= link_to "Créer mon compte artiste", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% else %>
+          <%= link_to "Créer mon compte artiste", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to "Obtenir mon tattoo personnalisé", new_project_path %>
+        |
+        <%= link_to "Créer mon compte artiste", sign_up_artist_path %>
+
     <% end %>
-    |
-    <% if current_user.artist == false %>
-      <%= link_to "Créer mon compte artiste", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% else %>
-      <%= link_to "Créer mon compte artiste", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
-
-  <% else %>
-
-    <%= link_to "Obtenir mon tattoo personnalisé", new_project_path %>
-    |
-    <%= link_to "Créer mon compte artiste", sign_up_artist_path %>
-
-<% end %>
+  </div>
+</div>

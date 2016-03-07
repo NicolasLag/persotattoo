@@ -1,3 +1,4 @@
+
 <h1>Mon Dashboard</h1>
 
 <%= link_to "<<< Modifier profil", edit_user_registration_path, class:"btn btn-primary" %>
@@ -19,22 +20,14 @@
           <p><i><%= project.style %></i></p>
           <h2><span class="label label-success"><%= pluralize(project.proposals.count, 'proposition') %></span></h2>
         </div>
-        <%= link_to "Project", project_path(project), {class: "card-link"} %>
+        <%= link_to "Project", project_proposals_path(project), {class: "card-link"} %>
       </div>
-      <% if project.proposals.count > 0 %>
-      <h1>Liste des propositions</h1>
 
-        <%project.proposals.each do |p| %>
-        <li>
-        <%= "Tatouage proposé par #{p.user.first_name} #{p.user.last_name}"%> <br>
-        <% p.photos.each do |photo| %>
-        <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-        <h3>Commentaires</h3>
-        <%=p.content%>
-        <% end %>
-        <% end %>
-      </li>
-      <% end %>
     <% end %>
   </div>
 </div>
+
+
+
+
+

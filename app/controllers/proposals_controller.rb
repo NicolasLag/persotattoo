@@ -3,7 +3,7 @@ class ProposalsController < ApplicationController
   before_action :set_proposal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @proposals = Proposal.all
+    @proposals = Project.find(params[:project_id]).proposals
   end
 
 

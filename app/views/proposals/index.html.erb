@@ -1,12 +1,12 @@
   <div class="container">
     <div class="row">
 
-      <% Project.find(6).proposals.each do |p| %>
+      <% @proposals.each do |p| %>
       <li>
         <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
          <div class="card-description">
           <h2>
-          <%="proposition de  #{User.find(p.user_id).first_name}"%>
+          <%="proposition de  #{p.user.first_name}"%>
           </h2>
           <%=  "Details :  #{p.content}" %>
 

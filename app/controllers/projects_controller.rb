@@ -15,13 +15,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
+    order = Order.create!(amount: @project.price, state: 'pending')
     if @project.save
-      redirect_to new_order_payment_path(@project)
+      redirect_to new_order_payment_path(order)
     else
       render :create
     end
   end
-
 
   def show
   end

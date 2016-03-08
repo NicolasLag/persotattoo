@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
+  get "style" => "pages#style"
   get "me" => "pages#me"
   get "me_profile" => "pages#me_profile"
 
@@ -38,6 +39,19 @@ Rails.application.routes.draw do
       delete :empty_trash
     end
   end
+
+  # resources :proposals, only: :update do
+  #   resources :conversations, only: [:index, :show, :destroy] do
+  #     member do
+  #       post :reply
+  #       post :restore
+  #       post :mark_as_read
+  #     end
+  #     collection do
+  #       delete :empty_trash
+  #     end
+  #   end
+  # end
 
   resources :messages, only: [:new, :create]
 

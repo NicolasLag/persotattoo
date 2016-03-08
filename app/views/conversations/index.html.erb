@@ -11,7 +11,7 @@ Nombre de messages non lus : <%= @unread_count %>
   <div class="col-sm-3">
     <ul class="nav nav-pills nav-stacked">
       <%= mailbox_section 'inbox', @box %>
-      <%#= mailbox_section 'sent', @box %>
+      <%= mailbox_section 'sent', @box %>
       <%#= mailbox_section 'trash', @box %>
     </ul>
   </div>

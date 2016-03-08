@@ -7,7 +7,6 @@ class PagesController < ApplicationController
 
   def me
     render(:layout => "layouts/dashboard")
-    @projects = current_user.projects.not_blacklisted
     @proposals = current_user.proposals
   end
 

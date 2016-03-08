@@ -9,4 +9,17 @@ class Project < ActiveRecord::Base
 
   has_attachments :photos, maximum: 5
   validates :description, :user_id, :style, :price, presence: true
+
+  def self.proposable
+    (recent.pending + recent.pending1).uniq
+  end
+
+  def self.not_blacklisted(user)
+    Project.proposable - user.hidden_projects.includes(:project).map(&:project)
+  end
+
+  def ending_at
+    created_at + 7.days
+  end
+
 end

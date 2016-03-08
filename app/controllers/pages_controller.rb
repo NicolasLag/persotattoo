@@ -7,8 +7,12 @@ class PagesController < ApplicationController
 
   def me
     render(:layout => "layouts/dashboard")
-    @projects = current_user.projects
+    @projects = current_user.projects.not_blacklisted
     @proposals = current_user.proposals
+  end
+
+  def me_artist
+    @projects = Project.not_blacklisted(current_user)
   end
 
   def sign_up_artist

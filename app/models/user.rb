@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :proposals, dependent: :destroy
   has_many :received_proposals, through: :projects, source: :proposals
+  has_many :hidden_projects, dependent: :destroy
 
   acts_as_messageable
 

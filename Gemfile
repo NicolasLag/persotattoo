@@ -24,6 +24,10 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 gem 'gravatar_image_tag'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-moment'
+end
+
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -32,7 +36,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-
 
 end
 

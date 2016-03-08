@@ -15,7 +15,8 @@
       <%= f.input :width %>
       <%= f.input :photos, as: :attachinary, label: 'Inspiration' %>
       <%= f.input :price, collection: ["99", "199", "299"] %>
-      <%= f.button :submit, "Soumettre mon projet", class: "btn btn-success btn-block" %>
+      <%= f.button :submit, "Soumettre mon projet" , class: "btn btn-success btn-block" %>
+
     <% end %>
 
 
@@ -26,7 +27,4 @@
 
 
 
-        <%= form_tag orders_path do %>
-          <%= hidden_field_tag 'project_id', @project.id %>
-          <%= submit_tag 'Purchase' %>
-        <% end %>
+

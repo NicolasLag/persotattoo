@@ -46,7 +46,6 @@
           <%= f.input :address_postal_code, autofocus: true %>
           <h3>Visuels</h3>
         	<%= f.input :url, label: "Votre site internet", autofocus: true %>
-          <%= f.input :portfolio_photos, as: :attachinary %>
         	<%= f.input :avatar, as: :attachinary %>
 				  <%= f.button :submit, "Save", class: "btn btn-success btn-block"%>
 
@@ -64,12 +63,31 @@
  <div class="row">
   <div class="col-xs-12 col-sm-6">
     <div class="tab-content hidden" data-target="#portfolio" id="portfolio">
-      <h1>Mon Portfolio</h1>
+      <div class="container">
+        <h1>Mon Portfolio</h1>
           <% if @current_user.portfolio_photos?%>
           <% @current_user.portfolio_photos.each do |photo| %>
-          <%= cl_image_tag photo.path, height: 100, width: 100, crop: :fill%>
+            <%= link_to cl_image_path(photo.path), class:"swipebox" do %>
+              <%= cl_image_tag photo.path, height: 100, width: 100, crop: :fill %>
+            <% end %>
           <% end %>
           <% end %>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <%= devise_error_messages! %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <h3>Modifier Visuels</h3>
+            <%= f.input :portfolio_photos, as: :attachinary %>
+            <%= f.button :submit, "Save", class: "btn btn-success btn-block"%>
+
+            <% end %>
+            <h3>Supprimer mon compte</h3>
+              <p>Mécontent <%= link_to "Supprimer Mon Compte", registration_path(resource_name), data: { confirm: "Vous êtes sûr?" }, method: :delete %></p>
+      </div>
     </div>
   </div>
 </div>

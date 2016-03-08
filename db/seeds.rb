@@ -62,7 +62,9 @@ project_1 = Project.create({
     title: "Triangle de penrose",
     description: "Tatouage japonais autour de mon triangle de penrose",
     style: "Nature",
-    price: 150
+    price: 150,
+    sku: "flo",
+    name: "florent surfer",
   })
 
 project_2 = Project.create({
@@ -70,7 +72,9 @@ project_2 = Project.create({
     title: "Dessin japonais cuisse",
     description: "Je veux ce dessin sur ma cuisse",
     style: "Japonais",
-    price: 300
+    price: 300,
+    sku: "louis",
+    name: "louis 2 pons",
   })
 
 project_3 = Project.create({

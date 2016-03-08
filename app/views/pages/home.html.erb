@@ -10,15 +10,15 @@
     <% if user_signed_in? %>
 
         <% if current_user.artist == false %>
-          <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "btn-cta" %>
         <% else %>
-          <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "btn-cta" %>
         <% end %>
         |
         <% if current_user.artist == false %>
-          <%= link_to "Créer mon compte artiste", me_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Créer mon compte artiste", me_path, class: "btn-cta" %>
         <% else %>
-          <%= link_to "Créer mon compte artiste", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Créer mon compte artiste", me_artist_path, class: "btn-cta" %>
         <% end %>
 
       <% else %>

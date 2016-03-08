@@ -16,22 +16,14 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
     if @project.save
-      redirect_to me_path
+      redirect_to new_order_payment_path(@project)
     else
       render :create
     end
   end
 
-  def edit
-  end
 
   def show
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

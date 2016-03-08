@@ -24,6 +24,12 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 gem 'gravatar_image_tag'
+gem 'money-rails'
+gem 'stripe'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-swipebox'
+end
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -27,7 +27,9 @@ gem 'gravatar_image_tag'
 gem 'money-rails'
 gem 'stripe'
 
+
 source 'https://rails-assets.org' do
+  gem 'rails-assets-moment'
   gem 'rails-assets-swipebox'
 end
 
@@ -38,7 +40,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-
 
 end
 

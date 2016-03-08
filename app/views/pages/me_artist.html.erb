@@ -10,7 +10,7 @@
 
 <div class="container profile-header-container text-center">
     <div class="profile-header-infos">
-      <% if @current_user.avatar? %>
+      <% if current_user.avatar? %>
           <%= cl_image_tag current_user.avatar.path, height: 100, width: 100, crop: :fill  %>
       <% end %>
       <h1><%= current_user.first_name%> <%= current_user.last_name%></h1>
@@ -38,15 +38,34 @@
     <h1>Tous les projets</h1>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-        <% Project.all.each do |project| %>
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
-          <div class="card-description">
-            <h2><strong><%= project.title %></strong></h2>
-            <h3><%= project.user.first_name %></h3>
-            <h2><span class="label label-success"><%= project.price %>€</span></h2>
-            <p><i><strong><%= project.created_at %></strong></i></p>
-          </div>
-          <%= link_to "Proposal", new_project_proposal_path(project), {class: "card-link"} %>
+        <% @projects.each do |project| %>
+          <div id="card-project-<%= project.id %>">
+            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+            <div class="card-description">
+              <% content_for :after_js do %>
+                <script>
+                  var endingAt = moment("<%= project.ending_at %>");
+
+                  var currentTime = moment.utc();
+                  var diffTime = endingAt - currentTime;
+                  var duration = moment.duration(diffTime);
+                  var interval = 1000;
+
+                  setInterval(function(){
+                    duration = moment.duration(duration - interval, 'milliseconds');
+                      $('#project-countdown-<%= project.id %>').text(duration.days() + "j - " + duration.hours() + ":" + ('00' + duration.minutes()).slice(-2) + ":" + ('00' + duration.seconds()).slice(-2))
+                  }, interval);
+                </script>
+              <% end %>
+              <h2><strong><%= project.title %></strong></h2>
+              <h3><%= project.user.first_name %></h3>
+              <h2><span class="label label-success"><%= project.price %>€</span></h2>
+              <h2><%= link_to "Cacher", project_hidden_projects_path(project), method: :post, data: {confirm: 'Sûr de cacher ce projet ? Cette action est définitive.'}, remote: true %></h2>
+              </div>
+              <div id="project-countdown-<%= project.id %>"></div>
+            </div>
+            <%#= link_to "Proposal", new_project_proposal_path(project), {class: "card-link"} %>
+            </div>
           </div>
         <% end %>
         </div>

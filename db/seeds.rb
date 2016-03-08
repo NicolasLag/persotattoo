@@ -77,6 +77,14 @@ project_2 = Project.create({
     name: "louis 2 pons",
   })
 
+project_3 = Project.create({
+    user: louis,
+    title: "Dauphin et crâne",
+    description: "Tout comme mon chanteur préféré",
+    style: "Dessin",
+    price: 100
+  })
+
 #==== PROPOSALS ====
 
 proposal_1 = Proposal.create({
@@ -85,7 +93,7 @@ proposal_1 = Proposal.create({
     validated_at: DateTime.now
   })
 
-proposal_1 = Proposal.create({
+proposal_2 = Proposal.create({
     user: nicolas,
     project: project_2
   })

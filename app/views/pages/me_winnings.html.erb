@@ -1,0 +1,18 @@
+<%= link_to '<<< Projets', me_path %>
+<br>
+<%#= link_to '<<< Mes messages', conversations_path %>
+
+<div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+      <% p = project.proposals.validated %>
+      <% p.each do |proposal| %>
+        <%= proposal.content %>
+        <%= proposal.validated_at %>
+        <%= proposal.project.user.first_name %>
+        <%= link_to "Voir", proposal_path(proposal) %>
+      <% end %>
+      <br>
+    <% end %>
+  </div>
+</div>

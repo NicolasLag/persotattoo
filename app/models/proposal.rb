@@ -4,9 +4,11 @@ class Proposal < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
   has_one :review, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :user_id, :project_id, presence: true
 
   scope :pending, -> { where("#{table_name}.validated_at IS NULL") }
+  scope :validated, -> { where("#{table_name}.validated_at IS NOT NULL") }
 
 end

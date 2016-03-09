@@ -2,24 +2,24 @@
 <br>
 <%= link_to '<<< Projets', me_artist_path %>
 <br>
-<%= link_to '<<< Mes messages', conversations_path %>
+<%#= link_to '<<< Mes messages', conversations_path %>
 
 <div class="container">
-  <h1>Mes propositions</h1>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
+ <h1>Mes propositions</h1>
+   <div class="row">
+     <div class="col-xs-12 col-sm-6">
 
-      <% current_user.proposals.each do |proposal| %>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
-        <div class="card-description">
-          <p><%= proposal.content %></p>
-        </div>
-        <%= link_to "Proposal", project_proposal_path(proposal.project_id, proposal), {class: "card-link"} %>
-        </div>
+     <% current_user.proposals.each do |proposal| %>
+       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
+       <div class="card-description">
+         <p><%= proposal.content %></p>
+       </div>
+       <%= link_to "Proposal", project_proposal_path(proposal.project_id, proposal), {class: "card-link"} %>
+       </div>
 
-      <% end %>
+     <% end %>
 
 
-      </div>
-    </div>
+     </div>
+   </div>
 </div>

@@ -4,7 +4,10 @@
 <%= link_to '<<< Propositions', me_artist_proposals_path, class:"btn btn-success" %>
 <br>
 <br>
-<%= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
+<%#= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
+<br>
+<br>
+<%= link_to '<<< Mes winnings', me_artist_winnings_path, class:"btn btn-primary" %>
 
 
 
@@ -18,22 +21,7 @@
     </div>
 </div>
 
-<!-- LA PARTIE TAB -->
-<!-- <ul class="nav nav-tabs">
-  <li role="presentation" class="tab active">
-    <a data-target="#projects" href="#projects">
-      Projets
-    </a>
-  </li>
-  <li role="presentation" class="tab">
-    <a data-target="#portfolio" href="#portfolio">
-      Portfolio
-    </a>
-  </li>
-</ul>
- -->
-
-<!-- LA PARTIE PROJETS  -->
+<!-- PROJECTS  -->
 <div class="container">
     <h1>Tous les projets</h1>
       <div class="row">
@@ -45,7 +33,6 @@
               <% content_for :after_js do %>
                 <script>
                   var endingAt = moment("<%= project.ending_at %>");
-
                   var currentTime = moment.utc();
                   var diffTime = endingAt - currentTime;
                   var duration = moment.duration(diffTime);
@@ -64,7 +51,7 @@
               </div>
               <div id="project-countdown-<%= project.id %>"></div>
             </div>
-            <%#= link_to "Proposal", new_project_proposal_path(project), {class: "card-link"} %>
+            <%= link_to "Proposal", new_project_proposal_path(project) %>
             </div>
           </div>
         <% end %>

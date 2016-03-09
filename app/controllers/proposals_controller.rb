@@ -4,11 +4,13 @@ class ProposalsController < ApplicationController
 
   def index
     @proposals = Project.find(params[:project_id]).proposals
+    @message = Message.new
   end
 
 
   def show
-    @project = current_user.proposals.first
+    @proposal = Proposal.find(params[:id])
+    @message = @proposal.messages.new()
   end
 
   def new
@@ -18,6 +20,7 @@ class ProposalsController < ApplicationController
 
   def create
      @proposal = current_user.proposals.new(proposal_params)
+     Message.new(@proposal)
      @proposal.project = Project.find(params[:project_id])
     if @proposal.save
 
@@ -27,13 +30,19 @@ class ProposalsController < ApplicationController
     end
   end
 
-
   def update
+    @proposal = Proposal.find(params[:id])
     @proposal.update(validated_at: DateTime.now)
-    respond_to do |format|
-      format.html { } # TODO
-      format.js
-    end
+    message = Message.new(user: current_user, proposal: @proposal, content: params[:proposal][:message][:content])
+    message.save
+    redirect_to me_path
+
+    # @proposal.update(validated_at: DateTime.now)
+    # Message.new(user: current_user, proposal: @proposal, content: )
+    # respond_to do |format|
+    #   format.html { } # TODO
+    #   format.js
+    # end
   end
 
   def destroy
@@ -46,6 +55,7 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:project_id, :content, :validated_at, :user_id, photos: [])
+    params.require(:proposal).permit(:project_id, :content, :message, :validated_at, :user_id, photos: [])
   end
 end
+

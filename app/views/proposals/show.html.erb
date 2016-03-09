@@ -1,8 +1,15 @@
 
 <h1>Client's name: <strong><%= @proposal.project.user.first_name %></strong></h1>
 <br>
-<%= @proposal.content %>
+<h1>Artist's name: <strong><%= @proposal.user.first_name %></strong></h1>
 <br>
-<% @proposal.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+
+<% @proposal.messages.each do |message| %>
+  <%= message.content %>
 <% end %>
+
+<%= simple_form_for [@proposal, @message] do |f| %>
+  <%= f.input :content %>
+  <%= f.button :submit, "Envoyer mon message", class: "btn btn-success btn-block"%>
+<% end %>
+

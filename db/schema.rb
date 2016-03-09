@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308092532) do
+ActiveRecord::Schema.define(version: 20160309145910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 20160308092532) do
   add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type", using: :btree
 
   create_table "mailboxer_conversations", force: :cascade do |t|
-    t.string   "subject",    default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "subject",     default: ""
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "proposal_id"
   end
 
   create_table "mailboxer_notifications", force: :cascade do |t|
@@ -94,6 +95,17 @@ ActiveRecord::Schema.define(version: 20160308092532) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "proposal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "messages", ["proposal_id"], name: "index_messages_on_proposal_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "state"
@@ -184,6 +196,8 @@ ActiveRecord::Schema.define(version: 20160308092532) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "messages", "proposals"
+  add_foreign_key "messages", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "proposals", "projects"
   add_foreign_key "proposals", "users"

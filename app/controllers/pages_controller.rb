@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   end
 
   def me
+    @projects = Project.proposable
     render(:layout => "layouts/dashboard")
-    @proposals = current_user.proposals
   end
 
   def me_artist
@@ -16,5 +16,13 @@ class PagesController < ApplicationController
 
   def sign_up_artist
     @user = User.new
+  end
+
+  def me_artist_winnings
+    @proposals = current_user.proposals.validated
+  end
+
+  def me_winnings
+    @projects = current_user.projects
   end
 end

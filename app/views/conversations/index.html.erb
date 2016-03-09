@@ -3,15 +3,45 @@
 <br>
 <%= link_to '<<< Nouvelle conversation', new_message_path, class:"btn btn-success" %>
 
+
+<p>Chatting with
+  <%#= render 'conversations/participants', conversation: @conversation %>
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @conversation.subject %></div>
+
+  <div class="panel-body">
+    <div class="messages">
+      <% @conversation.receipts_for(current_user).each do |receipt| %>
+        <div class="media">
+          <% message = receipt.message %>
+          <div class="media-left">
+            <%= gravatar_for message.sender, 45, message.sender.first_name %>
+          </div>
+
+          <div class="media-body">
+            <h6 class="media-heading"><%= message.sender.first_name %>
+              says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></h6>
+            <%= message.body %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<hr>
 <h1>Mes Conversations</h1>
 
-Nombre de messages non lus : <%= @unread_count %>
-
+Nombre de messages non lus : <%#= @unread_count %>
 <div class="row">
   <div class="col-sm-3">
     <ul class="nav nav-pills nav-stacked">
-      <%= mailbox_section 'inbox', @box %>
-      <%= mailbox_section 'sent', @box %>
+      <%#= mailbox_section 'inbox', @box %>
+      <%#= mailbox_section 'sent', @box %>
       <%#= mailbox_section 'trash', @box %>
     </ul>
   </div>
@@ -21,9 +51,9 @@ Nombre de messages non lus : <%= @unread_count %>
       <!-- <p><%#= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></p> -->
     <%# end %>
     <ul class="list-group">
-      <%= render partial: 'conversations/conversation', collection: @conversations %>
+      <%#= render partial: 'conversations/conversation', collection: @conversations %>
     </ul>
 
-    <%= will_paginate %>
+    <%#= will_paginate %>
   </div>
 </div>

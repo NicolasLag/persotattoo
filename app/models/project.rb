@@ -20,6 +20,10 @@ class Project < ActiveRecord::Base
     Project.proposable - user.hidden_projects.includes(:project).map(&:project)
   end
 
+  def self.unvalidated(user)
+    user.includes(:project).map(&:project)
+  end
+
   def ending_at
     created_at + 7.days
   end

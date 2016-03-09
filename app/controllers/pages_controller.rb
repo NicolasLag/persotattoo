@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def me
-    @projects = Project.proposable
+    @projects = Project.unvalidated(current_user)
     render(:layout => "layouts/dashboard")
   end
 

@@ -20,10 +20,8 @@ class ProposalsController < ApplicationController
 
   def create
      @proposal = current_user.proposals.new(proposal_params)
-     Message.new(@proposal)
      @proposal.project = Project.find(params[:project_id])
     if @proposal.save
-
       redirect_to me_artist_path
     else
       render :new

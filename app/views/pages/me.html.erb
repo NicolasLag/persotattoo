@@ -23,7 +23,7 @@
             <h3><%= project.title %></h3>
             <p><i><%= project.style %></i></p>
             <h2>
-            <%= link_to pluralize(project.proposals.count,'proposition'), project_proposals_path(project), {class:"label label-success text-align-center"} %>
+            <%= link_to pluralize(project.proposals.count,'proposition'), project_proposals_path(project), {class:"label label-success text-align-center"} if project.proposals.count>0 %>
             </h2>
           </div>
       </div>

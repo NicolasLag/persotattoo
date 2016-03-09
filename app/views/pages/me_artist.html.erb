@@ -10,65 +10,71 @@
 <%= link_to '<<< Mes winnings', me_artist_winnings_path, class:"btn btn-primary" %>
 
 
+<!-- LA PARTIE TAB -->
+<!-- <ul class="nav nav-tabs">
+  <li role="presentation" class="tab active">
+    <a data-target="#projects" href="#projects">
+      Projets
+    </a>
+  </li>
+  <li role="presentation" class="tab">
+    <a data-target="#portfolio" href="#portfolio">
+      Portfolio
+    </a>
+  </li>
+</ul>
+ -->
 
-<div class="container profile-header-container text-center">
-    <div class="profile-header-infos">
-      <% if current_user.avatar? %>
-          <%= cl_image_tag current_user.avatar.path, height: 100, width: 100, crop: :fill  %>
-      <% end %>
-      <h1><%= current_user.first_name%> <%= current_user.last_name%></h1>
-
-    </div>
-</div>
-
-<!-- PROJECTS  -->
+<!-- LA PARTIE PROJETS  -->
 <div class="container">
-    <h1>Tous les projets</h1>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-        <% @projects.each do |project| %>
-          <div id="card-project-<%= project.id %>">
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
-            <div class="card-description">
-              <% content_for :after_js do %>
-                <script>
-                  var endingAt = moment("<%= project.ending_at %>");
-                  var currentTime = moment.utc();
-                  var diffTime = endingAt - currentTime;
-                  var duration = moment.duration(diffTime);
-                  var interval = 1000;
-
-                  setInterval(function(){
-                    duration = moment.duration(duration - interval, 'milliseconds');
-                      $('#project-countdown-<%= project.id %>').text(duration.days() + "j - " + duration.hours() + ":" + ('00' + duration.minutes()).slice(-2) + ":" + ('00' + duration.seconds()).slice(-2))
-                  }, interval);
-                </script>
-              <% end %>
-              <h2><strong><%= project.title %></strong></h2>
-              <h3><%= project.user.first_name %></h3>
-              <h2><span class="label label-success"><%= project.price %>€</span></h2>
-              <h2><%= link_to "Cacher", project_hidden_projects_path(project), method: :post, data: {confirm: 'Sûr de cacher ce projet ? Cette action est définitive.'}, remote: true %></h2>
-              </div>
-              <div id="project-countdown-<%= project.id %>"></div>
-            </div>
-            <%= link_to "Proposal", new_project_proposal_path(project) %>
-            </div>
+  <h1>Tous les projets</h1>
+  <div class="row">
+    <% @projects.each do |project| %>
+      <div class="col-xs-12 col-sm-6" id="card-project-<%= project.id %>">
+        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.photos.first.path if project.photos.any? %>')">
+          <div class="card-category">
+            <% if project.user.avatar? %>
+          <%= cl_image_tag project.user.avatar.path, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%else%>
+           <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+          <%= project.user.first_name%>
           </div>
-        <% end %>
+
+          <!-- TO MOVE SOMEWHERE ELSE -->
+          <% content_for :after_js do %>
+            <script>
+              var endingAt = moment("<%= project.ending_at %>");
+
+              var currentTime = moment.utc();
+              var diffTime = endingAt - currentTime;
+              var duration = moment.duration(diffTime);
+              var interval = 1000;
+
+              setInterval(function(){
+                duration = moment.duration(duration - interval, 'milliseconds');
+                $('#project-countdown-<%= project.id %>').text(duration.days() + "j - " + duration.hours() + ":" + ('00' + duration.minutes()).slice(-2) + ":" + ('00' + duration.seconds()).slice(-2))
+              }, interval);
+            </script>
+          <% end %>
+          <!-- NO KIDDING -->
+
+          <div id="project-countdown-<%= project.id %>" class="countdown"></div>
+          <div class="card-description">
+            <h2>
+              <%= project.title %>
+              <%= link_to "", new_project_proposal_path(project), class:"card-description card-link"%>
+            </h2>
+
+          </div>
+          <span class="label label-success"><%= project.price %>€</span>
+
+          <%= link_to project_hidden_projects_path(project), method: :post, class: "card-hide", data: {confirm: 'Sûr de cacher ce projet ? Cette action est définitive.'}, remote: true do %>
+            <i class="fa fa-eye"></i> Cacher ce projet
+          <% end %>
         </div>
       </div>
+    <% end %>
   </div>
 </div>
-<!-- LA PARTIE PORTFOLIO  -->
-<!-- <div class="row">
-  <div class="col-xs-12 col-sm-6">
-    <div class="tab-content hidden" data-target="#portfolio" id="portfolio">
-        <h1>Mon Portfolio</h1>
-        <% if @current_user.portfolio_photos?%>
-          <% @current_user.portfolio_photos.each do |photo| %>
-          <%= cl_image_tag photo.path, height: 150, width: 100, crop: :fill %>
-          <% end %>
-        <% end %>
-      </div>
-  </div>
-</div> -->
+

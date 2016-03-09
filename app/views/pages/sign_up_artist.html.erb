@@ -1,17 +1,26 @@
-<h1>Sign up Artist</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 card-devise">
+      <div class="light-well">
+        <h3 class= "page-header text-center"><%= t('.sign_up', :default => "Inscription" )%></h3>
+        <br>
+          <%= simple_form_for(@user, as: :user, url: user_registration_path) do |f| %>
+            <%= f.error_notification %>
 
-
-<%= simple_form_for(@user, as: :user, url: user_registration_path) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :artist, as: :hidden, input_html: { value: true } %>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <%= f.input :password_confirmation, required: true %>
+              <%= f.input :artist, as: :hidden, input_html: { value: true } %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Inscription", class: "btn btn-success btn-sm btn-block btn-custom" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+
+

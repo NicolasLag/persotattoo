@@ -1,92 +1,101 @@
+$btn-color: #fff;
 
-$btn-color: #b40909;
-.btn-cta, .btn-cta:focus {
-  color: $btn-color;
-  color: $btn-color;
-  border: 1px solid $btn-color;
-  border-radius: 4px;
-  padding: 5px 10px;
-  position: relative;
-  transition: 300ms color ease;
-  display: inline-block;
-  text-decoration: none;
+.banner-content {
+  width: 100%;
 
-  &:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: $btn-color;
-    z-index: -1;
-    transition: 300ms top ease;
-  }
-  &:hover {
-    color: white;
-    text-decoration: none;
-    &:after {
-      top: 0;
+  .home-cta {
+    margin-top: 35px;
+
+    .btn-cta-artist,
+    .btn-cta-artist:focus,
+    .btn-cta-artist:active {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 1%;
+      min-width: 370px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      border: 1px solid $btn-color;
+      background-color: $btn-color;
+      color: #333;
+      border-radius: 4px;
+      transition: 300ms color ease;
+
+
+      &:hover {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+        &:after {
+          top: 0;
+        }
+      }
+    }
+
+    .btn-cta-customer,
+    .btn-cta-customer:focus,
+    .btn-cta-customer:active {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 1%;
+      min-width: 370px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      border: 1px solid $btn-color;
+      background-color: transparent;
+      color: white;
+      border-radius: 4px;
+      transition: 300ms color ease;
+
+      &:hover {
+        color: black;
+        background-color: white;
+        text-decoration: none;
+        &:after {
+          top: 0;
+        }
+      }
     }
   }
 }
 
 
-body
-{
-  padding: 50px;
+
+.social-login {
+  margin-top: 35px;
 }
 
-.animate
-{
-  transition: all 0.1s;
-  -webkit-transition: all 0.1s;
+.social-login h3 {
+  color: #fff;
 }
 
-.action-button
-{
-  position: relative;
-  padding: 10px 40px;
-  margin: 0px 10px 10px 0px;
-  float: left;
-  border-radius: 10px;
-  font-family: 'Pacifico', cursive;
-  font-size: 25px;
-  color: #FFF;
-  text-decoration: none;
+.social-login-buttons {
+  margin-top: 25px;
 }
 
-.blue
-{
-  background-color: #3498DB;
-  border-bottom: 5px solid #2980B9;
-  text-shadow: 0px -2px #2980B9;
+.btn-link-1 {
+  display: inline-block;
+  height: 50px;
+  margin: 5px;
+  padding: 16px 20px 0 20px;
+  background: #4aaf51;
+  font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
 
-.red
-{
-  background-color: #E74C3C;
-  border-bottom: 5px solid #BD3E31;
-  text-shadow: 0px -2px #BD3E31;
-}
+.btn-link-1.btn-link-1-facebook { background: #4862a3; }
 
-.green
-{
-  background-color: #82BF56;
-  border-bottom: 5px solid #669644;
-  text-shadow: 0px -2px #669644;
-}
-
-.yellow
-{
-  background-color: #F2CF66;
-  border-bottom: 5px solid #D1B358;
-  text-shadow: 0px -2px #D1B358;
-}
-
-.action-button:active
-{
-  transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
-  border-bottom: 1px solid;
+.btn-link-1 i {
+  padding-right: 5px;
+  vertical-align: middle;
+  font-size: 20px;
+  line-height: 20px;
 }

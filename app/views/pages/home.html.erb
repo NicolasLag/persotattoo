@@ -6,27 +6,26 @@
     <!-- <a class="btn btn-primary btn-lg">GET IT</a> -->
 
 
+    <div class="home-cta">
+      <% if user_signed_in? %>
 
-    <% if user_signed_in? %>
+          <% if current_user.artist == false %>
+            <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "btn-cta-customer" %>
+          <% else %>
+            <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "btn-cta-customer" %>
+          <% end %>
+          <% if current_user.artist == false %>
+            <%= link_to "Je suis un artiste", me_path, class: "btn-cta-artist" %>
+          <% else %>
+            <%= link_to "Je suis un artiste", me_artist_path, class: "btn-cta-artist" %>
+          <% end %>
 
-        <% if current_user.artist == false %>
-          <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "btn-cta" %>
         <% else %>
-          <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "btn-cta" %>
-        <% end %>
-        |
-        <% if current_user.artist == false %>
-          <%= link_to "Créer mon compte artiste", me_path, class: "btn-cta" %>
-        <% else %>
-          <%= link_to "Créer mon compte artiste", me_artist_path, class: "btn-cta" %>
-        <% end %>
 
-      <% else %>
+          <%= link_to "Obtenir mon tattoo personnalisé", new_project_path, class: "btn-cta-customer" %>
+          <%= link_to "Je suis un artiste", sign_up_artist_path, class: "btn-cta-artist" %>
 
-        <%= link_to "Obtenir mon tattoo personnalisé", new_project_path %>
-        |
-        <%= link_to "Créer mon compte artiste", sign_up_artist_path %>
-
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

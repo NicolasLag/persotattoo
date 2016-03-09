@@ -10,8 +10,6 @@
           </h2>
           <%=  "Details :  #{p.content}" %>
 
-
-
           <h3><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#proposal-<%= p.id %>">
             Choisir cette proposition
           </button>
@@ -32,7 +30,14 @@
           </div>
           <div class="modal-footer">
 
-          <%= link_to "Confirmer cette collaboration", proposal_path(p), method: :patch, remote: true, class:"btn btn-primary" %>
+          <%= simple_form_for p do |f| %>
+            <%= f.simple_fields_for :message do |m| %>
+              <%= m.input :content, as: :text %>
+            <% end %>
+            <%= f.button :submit, "Soumettre ma proposition", class: "btn btn-success btn-block"%>
+          <% end %>
+
+          <%#= link_to "Confirmer cette collaboration", proposal_path(p), method: :patch, remote: true, class:"btn btn-primary" %>
 
           <%= link_to "Retour", project_proposals_path, class: "btn btn-primary" %>
 
@@ -40,9 +45,6 @@
         </div>
       </div>
     </div>
-
-
-
   <% end %>
 
 </div>

@@ -1,3 +1,4 @@
+Mailboxer::Conversation.destroy_all
 Review.destroy_all
 Proposal.destroy_all
 Project.destroy_all
@@ -90,17 +91,19 @@ project_3 = Project.create({
 proposal_1 = Proposal.create({
     user: nicolas,
     project: project_1,
-    validated_at: DateTime.now
+    content: "Voici ma proposition"
   })
 
 proposal_2 = Proposal.create({
     user: nicolas,
-    project: project_2
+    project: project_2,
+    content: "Voici ma proposition"
   })
 
 Proposal.create({
     user: sylvain,
-    project: project_2
+    project: project_2,
+    content: "Voici ma proposition"
   })
 
 #==== REVIEWS ====
@@ -110,8 +113,3 @@ Review.create({
     content: "Super dessinateur, je kiff",
     rating: 3
   })
-
-# user_list.each do |user_data|
-#   user = User.create!(user_data)
-#   user.projects.create!(user_data[:project]) if user_data[:project].present?
-# end

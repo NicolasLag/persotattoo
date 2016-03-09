@@ -7,14 +7,18 @@
 <%= link_to "<<< Créer un projet", new_project_path, class:"btn btn-success"%>
 <br>
 <br>
-<%= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
+<%= link_to "<<< Mes winnings", me_winnings_path, class:"btn btn-success"%>
+<br>
+<br>
+<%#= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
 
 <div class="container">
   <h1>Mes projets</h1>
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <% current_user.projects.each do |project| %>
+      <% @projects.each do |project| %>
         <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.photos.first.path if project.photos.any? %>')">
+
           <div class="card-description">
             <h3><%= project.title %></h3>
             <p><i><%= project.style %></i></p>

@@ -4,7 +4,11 @@
 <%= link_to '<<< Propositions', me_artist_proposals_path, class:"btn btn-success" %>
 <br>
 <br>
-<%= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
+<%#= link_to '<<< Mes messages', conversations_path, class:"btn btn-primary" %>
+<br>
+<br>
+<%= link_to '<<< Mes winnings', me_artist_winnings_path, class:"btn btn-primary" %>
+
 
 <!-- LA PARTIE TAB -->
 <!-- <ul class="nav nav-tabs">
@@ -61,6 +65,7 @@
               <%= project.title %>
               <%= link_to "", new_project_proposal_path(project), class:"card-description card-link"%>
             </h2>
+
           </div>
           <span class="label label-success"><%= project.price %>€</span>
 

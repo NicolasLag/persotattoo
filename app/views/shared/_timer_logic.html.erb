@@ -1,0 +1,15 @@
+<% content_for :after_js do %>
+  <script>
+    var endingAt = moment("<%= project.ending_at %>");
+
+    var currentTime = moment.utc();
+    var diffTime = endingAt - currentTime;
+    var duration = moment.duration(diffTime);
+    var interval = 1000;
+
+    setInterval(function(){
+      duration = moment.duration(duration - interval, 'milliseconds');
+      $('#project-countdown-<%= project.id %>').text(duration.days() + "j - " + duration.hours() + ":" + ('00' + duration.minutes()).slice(-2) + ":" + ('00' + duration.seconds()).slice(-2))
+    }, interval);
+  </script>
+<% end %>

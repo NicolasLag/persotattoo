@@ -26,7 +26,8 @@ gem 'omniauth-facebook'
 gem 'gravatar_image_tag'
 gem 'money-rails'
 gem 'stripe'
-
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment'

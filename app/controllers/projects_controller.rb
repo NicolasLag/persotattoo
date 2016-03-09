@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
     @project = Project.new
     if session[:project]
       @project = Project.new(session[:project])
-      @project.valid?
     end
   end
 

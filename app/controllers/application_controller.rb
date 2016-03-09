@@ -38,8 +38,9 @@ class ApplicationController < ActionController::Base
     return nil unless session[:project]
     @project = Project.new(session[:project])
     @project.user = current_user
+    order = Order.create!(amount: @project.price, state: 'pending')
     if @project.save
-      me_path
+      new_order_payment_path(order)
     else
       new_project_path
     end

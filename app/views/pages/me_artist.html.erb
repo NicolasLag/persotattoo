@@ -44,16 +44,16 @@
           <!-- TO MOVE SOMEWHERE ELSE -->
           <% content_for :after_js do %>
             <script>
-              var endingAt = moment("<%= project.ending_at %>");
+              var endingAt<%= project.id %> = moment("<%= project.ending_at %>");
 
               var currentTime = moment.utc();
-              var diffTime = endingAt - currentTime;
-              var duration = moment.duration(diffTime);
+              var diffTime<%= project.id %> = endingAt<%= project.id %> - currentTime;
+              var duration<%= project.id %> = moment.duration(diffTime<%= project.id %>);
               var interval = 1000;
 
               setInterval(function(){
-                duration = moment.duration(duration - interval, 'milliseconds');
-                $('#project-countdown-<%= project.id %>').text(duration.days() + "j - " + duration.hours() + ":" + ('00' + duration.minutes()).slice(-2) + ":" + ('00' + duration.seconds()).slice(-2))
+                duration<%= project.id %> = moment.duration(duration<%= project.id %> - interval, 'milliseconds');
+                $('#project-countdown-<%= project.id %>').text(duration<%= project.id %>.days() + "j - " + duration<%= project.id %>.hours() + ":" + ('00' + duration<%= project.id %>.minutes()).slice(-2) + ":" + ('00' + duration<%= project.id %>.seconds()).slice(-2))
               }, interval);
             </script>
           <% end %>

@@ -14,7 +14,7 @@
        <div class="card-description">
          <p><%= proposal.content %></p>
        </div>
-       <%= link_to "Proposal", project_proposal_path(proposal.project_id, proposal), {class: "card-link"} %>
+       <%= link_to "Proposal", proposal_path(proposal), {class: "card-link"} %>
        </div>
 
      <% end %>

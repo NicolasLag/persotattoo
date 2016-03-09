@@ -8,7 +8,8 @@ class Proposal < ActiveRecord::Base
 
   validates :user_id, :project_id, presence: true
 
-  scope :pending, -> { where("#{table_name}.validated_at IS NULL") }
+  # scope :pending, -> { where("#{table_name}.validated_at IS NULL") }
+  scope :pending, -> { where(validated_at: nil) }
   scope :validated, -> { where("#{table_name}.validated_at IS NOT NULL") }
 
 end

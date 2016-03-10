@@ -24,33 +24,23 @@
         <%= link_to "#{current_user.first_name}", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
-      <!-- Notification -->
-      <!-- conversations_path -->
-<!--       <%#= link_to proposal_conversations_path(current_user.proposals), class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue"><%= @unread_count %></div>
-        </div>
-      <%# end %> -->
-
-
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-        <% if user_signed_in? and current_user.avatar %>
-          <%= cl_image_tag current_user.avatar.path, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% if user_signed_in? and current_user.picture %>
+          <%= cl_image_tag current_user.picture, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <%else%>
            <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t ".profile", default: "Profil" %>
+              <%= link_to root_path do %>
+              <i class="fa fa-home"></i>  <%= t ".profile", default: "Accueil" %>
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Accueil" %>
+                <i class="fa fa-user"></i> <%= t ".profile", default: "Profil" %>
               <% end %>
             </li>
             <li>
@@ -63,13 +53,9 @@
       </div>
 
     <% else %>
-
-      <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "btn-medium" %>
     <% end %>
 
-    <!-- Button (call-to-action) -->
- <%#= link_to t(".top_call_to_action", default: "Déposer une annonce"), "#", class: "btn-medium" %>
  </div>
 
   <!-- Dropdown list appearing on mobile only -->
@@ -77,11 +63,22 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+          <%= link_to root_path do %>
+            <i class="fa fa-home"></i>  <%= t ".profile", default: "Accueil" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-user"></i> <%= t ".profile", default: "Profil" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Deconnexion" %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
 </div>
-

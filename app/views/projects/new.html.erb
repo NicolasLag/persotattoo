@@ -1,8 +1,9 @@
 <div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://drscdn.500px.org/photo/83060751/q%3D80_h%3D450/291b840e7d1ddd12bfe3c44d70f19222');">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <div class="light-well">
+    <div class="light-well">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+
           <h3 class="text-center black-policy">Décrivez votre projet
             Lancez votre concours pour obtenir votre tatouage personnalisé
           </h3>
@@ -20,11 +21,19 @@
                   <%= f.input :height  %>
                   <%= f.input :width %>
               <h3 class="text-center black-policy">Images d'inspiration</h3>
-              <%= f.input :photos, as: :attachinary %>
-              <%= f.input :price, collection: ["99", "199", "299"] %>
-              <%= f.button :submit, "Soumettre mon projet" , class: "btn btn-success btn-block" %>
-            <% end %>
-        </div>
+              <div class="form-group">
+                <%= f.input :photos, as: :attachinary %>
+              </div>
+              <div class="form-group">
+                <%= f.input :price, collection: ["99", "199", "299"] %>
+              </div>
+
+              <div class="form-group">
+                <%= f.button :submit, "Soumettre mon projet" , class: "btn btn-success btn-block" %>
+              </div>
+
+         </div>
+       <% end %>
       </div>
     </div>
   </div>

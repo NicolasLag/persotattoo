@@ -22,14 +22,14 @@
                 <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
               <% end %>
             </div>
-
+                <br>
             <div class="actions">
               <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-success form-control " %>
             </div>
             <%= devise_error_messages! %>
           <% end %>
         </div>
-
+          <br>
         <%= render "devise/shared/links" %>
         <br>
       </div>

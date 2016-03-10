@@ -17,7 +17,7 @@
           <!-- TO MOVE SOMEWHERE ELSE -->
           <% content_for :after_js do %>
             <script>
-              var endingAt<%= project.id %> = moment(<%= project.ending_at %>);
+              var endingAt<%= project.id %> = moment('<%= project.ending_at %>');
 
               var currentTime = moment.utc();
               var diffTime<%= project.id %> = endingAt<%= project.id %> - currentTime;
@@ -40,7 +40,7 @@
             </h2>
 
           </div>
-          <span class="label label-success"><%= project.price %>€</span>
+          <span class="label label-success"><%= humanized_money (project.price) %> €</span>
 
           <%= link_to project_hidden_projects_path(project), method: :post, class: "card-hide", data: {confirm: 'Sûr de cacher ce projet ? Cette action est définitive.'}, remote: true do %>
             <i class="fa fa-eye-slash"></i> Cacher ce projet

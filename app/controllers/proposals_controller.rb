@@ -9,6 +9,7 @@ class ProposalsController < ApplicationController
 
 
   def show
+    render(:layout => "layouts/dashboard")
     @proposal = Proposal.find(params[:id])
     @message = @proposal.messages.new()
   end

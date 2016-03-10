@@ -1,36 +1,38 @@
- <div class="container">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4 card-devise">
-      <div class="light-well">
-        <h3 class= "page-header text-center"><%= t('.sign_up', :default => "Sign up" )%></h3>
-        <br>
-        <%= form_for resource, as: resource_name, url: registration_path(resource_name),
-                      html: { class: "form-horizontal center"} do |f| %>
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://drscdn.500px.org/photo/140800209/q%3D80_h%3D450/74d561073c655da33872723a631c0151');">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="col-sm-4 col-sm-offset-4 card-devise">
+        <div class="light-well">
+          <h3 class="text-center black-policy"><%= t('.sign_up', :default => "Sign up" )%></h3>
+          <br>
+          <%= form_for resource, as: resource_name, url: registration_path(resource_name),
+                        html: { class: "form-horizontal cente r"} do |f| %>
 
-          <div class="form-group">
-            <%= f.email_field :email, autofocus: true, placeholder: "Email ", class: "form-control" %>
-          </div>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, placeholder: "Email ", class: "form-control" %>
+            </div>
 
-          <div class="form-group">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Mot  de passe", class: "form-control" %>
-          </div>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Mot  de passe", class: "form-control" %>
+            </div>
 
-          <div class="form-group">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmer le mot de passe", class: "form-control" %>
-            <% if @validatable %>
-              <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
-            <% end %>
-          </div>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmer le mot de passe", class: "form-control" %>
+              <% if @validatable %>
+                <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
+              <% end %>
+            </div>
 
-          <div class="actions">
-            <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-success btn-sm btn-block btn-custom" %>
-          </div>
-          <%= devise_error_messages! %>
-        <% end %>
-      </div>
+            <div class="actions">
+              <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-success form-control " %>
+            </div>
+            <%= devise_error_messages! %>
+          <% end %>
+        </div>
 
         <%= render "devise/shared/links" %>
-         <br>
+        <br>
+      </div>
     </div>
   </div>
 </div>

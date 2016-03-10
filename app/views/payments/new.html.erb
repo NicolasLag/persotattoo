@@ -6,11 +6,18 @@
     </label>
   </article>
 
+
+
+
+
+
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="My project"
-    data-description="project <%= @order.project_sku %>"
+    data-image="<%= asset_path "tatoo.jpg"%>"
+    data-name="PersoTattoo"
+    data-description="<%= @order.project_sku %>"
     data-amount="<%= @order.amount_cents %>"
-    data-currency="EUR"></script>
+    data-currency="EUR">
+  </script>
 <% end %>
 

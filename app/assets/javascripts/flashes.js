@@ -1,6 +1,5 @@
-
-$(document).ready(function(){
- setTimeout(function(){
-   $('#flashes').remove();
- }, 2000);
-})
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#flash').slideUp();
+  }, 2500);
+});

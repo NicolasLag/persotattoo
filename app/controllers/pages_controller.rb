@@ -24,5 +24,6 @@ class PagesController < ApplicationController
 
   def me_winnings
     @projects = current_user.projects
+    render(:layout => "layouts/dashboard")
   end
 end

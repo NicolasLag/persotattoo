@@ -1,6 +1,7 @@
 class ProposalsController < ApplicationController
 
   before_action :set_proposal, only: [:show, :edit, :update, :destroy]
+  layout "dashboard", only: [:show]
 
   def index
     @proposals = Project.find(params[:project_id]).proposals
@@ -9,7 +10,6 @@ class ProposalsController < ApplicationController
 
 
   def show
-    render(:layout => "layouts/dashboard")
     @proposal = Proposal.find(params[:id])
     @message = @proposal.messages.new()
   end

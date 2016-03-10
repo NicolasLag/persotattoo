@@ -55,7 +55,7 @@
           <span class="label label-success"><%= project.price %>€</span>
 
           <%= link_to project_hidden_projects_path(project), method: :post, class: "card-hide", data: {confirm: 'Sûr de cacher ce projet ? Cette action est définitive.'}, remote: true do %>
-            <i class="fa fa-eye"></i> Cacher ce projet
+            <i class="fa fa-eye-slash"></i> Cacher ce projet
           <% end %>
         </div>
       </div>

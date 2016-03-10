@@ -1,14 +1,33 @@
+<div class="tab-content" id="accepted">
+  <div class="well ">
+    <div class="row">
+      <% @projects.each do |project| %>
+        <% p = project.proposals.validated %>
+        <% p.each do |proposal| %>
+          <div class="col-xs-12 col-sm-6">
+              <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path proposal.photos.first.path if proposal.photos.any? %>')">
 
-<div class="row">
-  <% @projects.each do |project| %>
-    <% p = project.proposals.validated %>
-    <% p.each do |proposal| %>
-      <%= proposal.content %>
-      <%= proposal.validated_at %>
-      <%= proposal.project.user.first_name %>
-      <%= link_to "Voir", proposal_path(proposal) %>
-    <% end %>
-    <br>
-  <% end %>
+                <div class="card-description">
+                  <%= proposal.content %>
+                  <br>
+                  <br>
+                  <%= l(proposal.validated_at.to_date, format: :default) %>
+                  <%= link_to "", proposal_path(proposal), class:"card-description card-link"%>
+                </div>
+
+                <div class="card-category">
+                  <% if proposal.user.avatar? %>
+                    <%= cl_image_tag proposal.user.avatar.path, size: "30x30", crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                  <%else%>
+                  <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                  <% end %>
+                  <%= proposal.user.first_name %>
+                </div>
+                <span class="label label-success"><%= humanized_money (proposal.project.price)%> €</span>
+              </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-

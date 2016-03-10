@@ -20,6 +20,7 @@ class PagesController < ApplicationController
 
   def me_artist_winnings
     @proposals = current_user.proposals.validated
+    @proposals_not_validated = current_user.proposals - current_user.proposals.validated
   end
 
   def me_winnings

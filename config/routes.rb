@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
+  root to: 'pages#home'
+
   get "style" => "pages#style"
   get "me" => "pages#me"
   get "me_profile" => "pages#me_profile"
-
-  root to: 'pages#home'
 
   get 'sign_up_artist' => 'pages#sign_up_artist'
   get 'me_artist' => 'pages#me_artist'

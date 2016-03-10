@@ -20,8 +20,11 @@
         <div class="col-xs-12 col-sm-6">
           <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path proposal.photos.first.path if proposal.photos.any? %>')">
             <div class="card-description">
-              <h2><%= proposal.content %></h2>
-              <%= proposal.validated_at %>
+              <%= proposal.content %>
+              <br>
+              <br>
+              <%= l(proposal.validated_at.to_date, format: :default) %>
+              <%= link_to "", proposal_path(proposal), class:"card-description card-link"%>
             </div>
             <div class="card-category">
               <% if proposal.project.user.avatar? %>
@@ -31,10 +34,7 @@
               <% end %>
               <%= proposal.project.user.first_name %>
             </div>
-             <%= link_to proposal_path(proposal), class: "card-hide", remote: true do %>
-              <i class="fa fa-eye-"></i> Voir
-            <% end %>
-            <span class="label label-success"><%= proposal.project.price %>€</span>
+            <span class="label label-success"><%= humanized_money proposal.project.price %> €</span>
           </div>
         </div>
       <% end %>
@@ -43,15 +43,14 @@
 </div>
 ​
  <!-- PENDING PROPOSALS  -->
-
 <div class="tab-content hidden" id="pending">
   <div class="well ">
     <div class="row">
-      <% current_user.proposals.each do |proposal| %>
+      <% @proposals_not_validated.each do |proposal| %>
         <div class="col-xs-12 col-sm-6">
           <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path proposal.photos.first.path if proposal.photos.any? %>')">
             <div class="card-description">
-              <h2><%= proposal.content %></h2>
+              <%= proposal.content %>
             </div>
             <div class="card-category">
               <% if proposal.project.user.avatar? %>
@@ -61,7 +60,7 @@
               <% end %>
               <%= proposal.project.user.first_name %>
             </div>
-            <span class="label label-success"><%= proposal.project.price %>€</span>
+            <span class="label label-success"><%= humanized_money (proposal.project.price) %> €</span>
           </div>
         </div>
       <% end %>

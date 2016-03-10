@@ -24,16 +24,6 @@
         <%= link_to "#{current_user.first_name}", me_artist_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
-      <!-- Notification -->
-      <!-- conversations_path -->
-<!--       <%#= link_to proposal_conversations_path(current_user.proposals), class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue"><%= @unread_count %></div>
-        </div>
-      <%# end %> -->
-
-
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -49,7 +39,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t ".profile", default: "Accueil" %>
               <% end %>
             </li>
@@ -63,13 +53,9 @@
       </div>
 
     <% else %>
-
-      <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "btn-medium" %>
     <% end %>
 
-    <!-- Button (call-to-action) -->
- <%#= link_to t(".top_call_to_action", default: "Déposer une annonce"), "#", class: "btn-medium" %>
  </div>
 
   <!-- Dropdown list appearing on mobile only -->
@@ -77,11 +63,14 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Accueil</a></li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Deconnexion" %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
 </div>
-

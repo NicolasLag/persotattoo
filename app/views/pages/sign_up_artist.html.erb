@@ -1,26 +1,26 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4 card-devise">
-      <div class="light-well">
-        <h3 class= "page-header text-center"><%= t('.sign_up', :default => "Inscription" )%></h3>
-        <br>
-          <%= simple_form_for(@user, as: :user, url: user_registration_path) do |f| %>
-            <%= f.error_notification %>
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://drscdn.500px.org/photo/140800209/q%3D80_h%3D450/74d561073c655da33872723a631c0151');">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4 card-devise">
+        <div class="light-well">
+          <h3 class= "page-header black-policy text-center"><%= t('.sign_up', :default => "Inscription" )%></h3>
+          <br>
+            <%= simple_form_for(@user, as: :user, url: user_registration_path) do |f| %>
+              <%= f.error_notification %>
 
-            <div class="form-inputs">
-              <%= f.input :email, required: true, autofocus: true %>
-              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-              <%= f.input :password_confirmation, required: true %>
-              <%= f.input :artist, as: :hidden, input_html: { value: true } %>
-            </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Inscription", class: "btn btn-success btn-sm btn-block btn-custom" %>
-            </div>
-          <% end %>
+              <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true, class: "form-control black-policy" %>
+                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                <%= f.input :password_confirmation, required: true, class: "form-control black-policy" %>
+                <%= f.input :artist, as: :hidden, input_html: { value: true } %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, "Inscription", class: "btn btn-success form-control" %>
+              </div>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
 

@@ -18,15 +18,15 @@ $btn-color: #fff;
       font-weight: 600;
       text-transform: uppercase;
       border: 1px solid $btn-color;
-      background-color: $btn-color;
-      color: #333;
+      background-color: transparent;
+      color: #fff;
       border-radius: 4px;
       transition: 300ms color ease;
 
 
       &:hover {
-        color: white;
-        background-color: transparent;
+        color: black;
+        background-color: white;
         text-decoration: none;
         &:after {
           top: 0;
@@ -46,17 +46,19 @@ $btn-color: #fff;
       font-weight: 600;
       text-transform: uppercase;
       border: 1px solid $btn-color;
-      background-color: transparent;
-      color: white;
+      background-color: $btn-color;
+      color: black;
       border-radius: 4px;
-      transition: 300ms color ease;
+
 
       &:hover {
-        color: black;
-        background-color: white;
+        color: white;
+        background-color: transparent;
         text-decoration: none;
+        transition: 300ms color ease;
         &:after {
           top: 0;
+          transition: 300ms color ease;
         }
       }
     }
@@ -112,4 +114,8 @@ $btn-color: #fff;
   opacity: 1;
   text-decoration: none;
   color: #999999;
+}
+
+.black-policy{
+  color:grey;
 }

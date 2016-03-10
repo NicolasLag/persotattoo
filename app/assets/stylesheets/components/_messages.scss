@@ -4,3 +4,16 @@
   margin-bottom: 1em;
   margin-top: 1em;
 }
+
+.bubble {
+  background: #CCC;
+  max-width: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  &.bubble-left {
+    float: left;
+  }
+  &.bubble-right {
+    float: right;
+  }
+}

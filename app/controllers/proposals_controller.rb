@@ -10,8 +10,7 @@ class ProposalsController < ApplicationController
 
 
   def show
-    @proposal = Proposal.find(params[:id])
-    @message = @proposal.messages.new()
+    @message = Message.new()
   end
 
   def new
@@ -35,13 +34,6 @@ class ProposalsController < ApplicationController
     message = Message.new(user: current_user, proposal: @proposal, content: params[:proposal][:message][:content])
     message.save
     redirect_to me_path
-
-    # @proposal.update(validated_at: DateTime.now)
-    # Message.new(user: current_user, proposal: @proposal, content: )
-    # respond_to do |format|
-    #   format.html { } # TODO
-    #   format.js
-    # end
   end
 
   def destroy

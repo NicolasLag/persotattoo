@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
   def create
 
     @proposal = Proposal.find(params[:proposal_id])
-    message = @proposal.messages.new(user: current_user, content: message_params[:content])
+    message = @proposal.messages.new(message_params)
+    message.user = current_user
     message.save
     redirect_to @proposal
   end
@@ -11,6 +12,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params[:message].permit(:content)
+    params[:message].permit(:content, images: [])
   end
 end

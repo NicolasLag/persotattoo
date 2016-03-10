@@ -1,6 +1,5 @@
 
 <!-- LA PARTIE PROJETS  -->
-<div class="container">
   <h1>Tous les projets</h1>
   <div class="row">
     <% @projects.each do |project| %>
@@ -8,17 +7,17 @@
         <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.photos.first.path if project.photos.any? %>')">
           <div class="card-category">
             <% if project.user.avatar? %>
-          <%= cl_image_tag project.user.avatar.path, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <%else%>
-           <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% end %>
-          <%= project.user.first_name%>
+              <%= cl_image_tag project.user.avatar.path, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%else%>
+              <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% end %>
+            <%= project.user.first_name%>
           </div>
 
           <!-- TO MOVE SOMEWHERE ELSE -->
           <% content_for :after_js do %>
             <script>
-              var endingAt<%= project.id %> = moment("<%= project.ending_at %>");
+              var endingAt<%= project.id %> = moment(<%= project.ending_at %>);
 
               var currentTime = moment.utc();
               var diffTime<%= project.id %> = endingAt<%= project.id %> - currentTime;
@@ -50,5 +49,5 @@
       </div>
     <% end %>
   </div>
-</div>
+
 

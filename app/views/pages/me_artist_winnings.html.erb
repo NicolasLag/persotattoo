@@ -1,12 +1,12 @@
 
 <ul class="nav nav-tabs">
   <li role="presentation" class="tab active">
-    <a data-target="#accepted" href="#accepted">
+    <a data-target="#accepted" href="#">
       Mes propositions acceptées
     </a>
   </li>
   <li role="presentation" class="tab">
-    <a data-target="#pending" href="#pending">
+    <a data-target="#pending" href="#">
       Mes propositions en attente
     </a>
   </li>
@@ -14,14 +14,29 @@
 
 <!-- ACCEPTED PROPOSALS -->
 ​<div class="tab-content" id="accepted">
-  <div class="container">
+  <div class="well ">
     <div class="row">
-      <% @proposals.each do |proposal| %>
-        <%= proposal.content %>
-        <%= proposal.validated_at %>
-        <%= proposal.project.user.first_name %>
-        <%= link_to "Voir", proposal_path(proposal) %>
-        <br>
+        <% @proposals.each do |proposal| %>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path proposal.photos.first.path if proposal.photos.any? %>')">
+            <div class="card-description">
+              <h2><%= proposal.content %></h2>
+              <%= proposal.validated_at %>
+            </div>
+            <div class="card-category">
+              <% if proposal.project.user.avatar? %>
+                <%= cl_image_tag proposal.project.user.avatar.path, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <%else%>
+              <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% end %>
+              <%= proposal.project.user.first_name %>
+            </div>
+             <%= link_to proposal_path(proposal), class: "card-hide", remote: true do %>
+              <i class="fa fa-eye-"></i> Voir
+            <% end %>
+            <span class="label label-success"><%= proposal.project.price %>€</span>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -30,21 +45,26 @@
  <!-- PENDING PROPOSALS  -->
 
 <div class="tab-content hidden" id="pending">
-  <div class="well">
-  <h1 class="text-center">Mes propositions en attente </h1>
-  <div class="container">
+  <div class="well ">
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
       <% current_user.proposals.each do |proposal| %>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('assets/images/project.jpg')">
-        <div class="card-description">
-          <p><%= proposal.content %></p>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path proposal.photos.first.path if proposal.photos.any? %>')">
+            <div class="card-description">
+              <h2><%= proposal.content %></h2>
+            </div>
+            <div class="card-category">
+              <% if proposal.project.user.avatar? %>
+                <%= cl_image_tag proposal.project.user.avatar.path, size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <%else%>
+                <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% end %>
+              <%= proposal.project.user.first_name %>
+            </div>
+            <span class="label label-success"><%= proposal.project.price %>€</span>
+          </div>
         </div>
-        <%= link_to "Proposal", proposal_path(proposal), {class: "card-link"} %>
-       </div>
       <% end %>
-      </div>
     </div>
-  </div>
   </div>
 </div>

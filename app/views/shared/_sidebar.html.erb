@@ -1,6 +1,11 @@
-
-  <ul class="nav nav-pills nav-stacked">
-    <li role="presentation" class="<%= active_class(me_path)%>"><a href="me">Mes projets</a></li>
-    <li role="presentation" class="<%= active_class(me_winnings_path)%>"><a href="me_winnings">Mes propositions</a></li>
-    <li role="presentation" class="<%= active_class(me_path)%>"><a href="users/edit">Mon profil</a></li>
-  </ul>
+<ul class="nav nav-pills nav-stacked">
+  <li role="presentation" class="<%= active_class(me_path)%>">
+    <%= link_to "Mes projets", me_path %>
+  </li>
+  <li role="presentation" class="<%= active_class(me_winnings_path)%>">
+    <%= link_to "Mes propositions", me_winnings_path %>
+  </li>
+  <li role="presentation" class="<%= active_class(edit_user_registration_path)%>">
+    <%= link_to "Mon profil", edit_user_registration_path %>
+  </li>
+</ul>

@@ -1,13 +1,13 @@
 class PagesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:home, :sign_up_artist]
+  layout "dashboard", only: [:me, :me_winnings, :me_artist, :me_artist_winnings]
 
   def home
   end
 
   def me
     @projects = current_user.projects.proposable
-    render(:layout => "layouts/dashboard")
   end
 
   def me_artist

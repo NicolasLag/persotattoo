@@ -1,22 +1,16 @@
 <% if resource.artist %>
-  <%= link_to "<<< Voir les projets", me_artist_path%>
-  <br>
-  <%= link_to '<<< Propositions', me_artist_proposals_path %>
-  <br>
-
-  <h1>vous êtes un artiste</h1>
 ​
-<!-- LA PARTIE TAB -->
+<!-- ARTIST EDIT -->
 ​
 <ul class="nav nav-tabs">
   <li role="presentation" class="tab active">
     <a data-target="#edit" href="#edit">
-      Modifier le profil
+      Mon profil
     </a>
   </li>
   <li role="presentation" class="tab">
     <a data-target="#portfolio" href="#portfolio">
-      Portfolio
+      Mon portfolio
     </a>
   </li>
 </ul>
@@ -24,6 +18,7 @@
 ​
 <div class="tab-content" data-target="#edit" id="edit">
   <div class="well">
+  <h1 class="text-center">Modifier mon profil </h1>
       <div class="container">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -34,17 +29,17 @@
           <% end %>
           <h3>Modifications de compte</h3>
           <%= f.input :first_name, autofocus: true %>
-          <%= f.input :last_name, autofocus: true %>
-          <%= f.input :presentation, autofocus: true %>
-          <%= f.input :phone_number, autofocus: true %>
+          <%= f.input :last_name %>
+          <%= f.input :presentation %>
+          <%= f.input :phone_number %>
           <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
 ​
           <h3>Adresse de Facturation</h3>
-          <%= f.input :address_street, autofocus: true %>
-          <%= f.input :address_city, autofocus: true %>
-          <%= f.input :address_postal_code, autofocus: true %>
+          <%= f.input :address_street %>
+          <%= f.input :address_city %>
+          <%= f.input :address_postal_code %>
           <h3>Visuels</h3>
-          <%= f.input :url, label: "Votre site internet", autofocus: true %>
+          <%= f.input :url, label: "Votre site internet" %>
           <%= f.input :avatar, as: :attachinary %>
           <%= f.button :submit, "Save", class: "btn btn-success btn-block"%>
 ​
@@ -56,10 +51,9 @@
     </div>
 </div>
 ​
-​
-​
  <!-- LA PARTIE PORTFOLIO  -->
  <div class="row">
+ <h1 class="text-center">Modifier mon profil </h1>
   <div class="col-xs-12 col-sm-6">
     <div class="tab-content hidden" data-target="#portfolio" id="portfolio">
       <div class="container">
@@ -91,14 +85,11 @@
   </div>
 </div>
 ​
-<% else %>
-  <%= link_to "<<< Voir mes projets", me_path%>
-  <br>
-  <%= link_to "<<< Créer un projet", new_project_path%>
-  <br>
+<!-- CLIENT EDIT -->
 
-  <h1>Modifier votre profil client </h1>
+<% else %>
     <div class="well">
+    <h1 class="text-center">Modifier mon profil </h1>
       <div class="container-fluid">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -108,15 +99,15 @@
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
           <%= f.input :email, autofocus: true %>
-          <%= f.input :first_name, autofocus: true %>
-          <%= f.input :last_name, autofocus: true %>
-          <%= f.input :address_street, autofocus: true %>
-          <%= f.input :address_city, autofocus: true %>
-          <%= f.input :address_postal_code, autofocus: true %>
-          <%= f.input :presentation, autofocus: true %>
-          <%= f.input :phone_number, autofocus: true %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :address_street %>
+          <%= f.input :address_city %>
+          <%= f.input :address_postal_code %>
+          <%= f.input :presentation %>
+          <%= f.input :phone_number %>
           <%= f.input :avatar, as: :attachinary %>
-          <%= f.input :gender, collection: ["male", "female"], autofocus: true %>
+          <%= f.input :gender, collection: ["male", "female"] %>
           <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
           <%= f.button :submit, "Save", class: "btn btn-success btn-block"
            %>
@@ -126,5 +117,3 @@
       </div>
     </div>
 <% end %>
-​
-<%= link_to "Retour à mon profil", :back %>

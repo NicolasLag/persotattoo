@@ -30,15 +30,6 @@ User.create!({
     artist: true
   })
 
-
-User.create!({
-    first_name: "Salvador",
-    last_name: "Dali",
-    email: "dali@gmail.com",
-    password: "123soleil",
-    artist: true
-  })
-
 User.create!({
     first_name: "Lady",
     last_name: "Gaga",

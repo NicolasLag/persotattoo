@@ -1,39 +1,40 @@
 <div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://drscdn.500px.org/photo/83060751/q%3D80_h%3D450/291b840e7d1ddd12bfe3c44d70f19222');">
   <div class="container">
-    <div class="light-well">
-      <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3">
-
-          <h3 class="text-center black-policy">Décrivez votre projet
-            Lancez votre concours pour obtenir votre tatouage personnalisé
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 card-devise card-view">
+        <div class="light-well">
+          <h3 class="black-policy">Description de mon projet<br>
+            <small>Lancer mon concours pour obtenir mon tatouage personnalisé</small>
           </h3>
-            <%= simple_form_for @project, html: { class: "form-horizontal cente r"} do |f| %>
-              <div class="form-group">
-                <%= f.input :title, label: "Titre", placeholder: "Ex. : une chouette sur une branche de bambou" %>
-              </div>
-              <div class="form-group">
-                <%= f.input :description, label: "Description", placeholder: "Ex. : la chouette doit être le sujet principal, avec des yeux transpersants. La branche de bambou doit comporter quelques feuilles, de style moderne." %>
-              </div>
-              <div class="form-group">
-                <%= f.input :style, placeholder: "Style", collection: ["Japonais", "Mots / Calligraphie", "Dessin", "Graphique / abstrait", "Tribal / Maori", "Bio-méchanique", "Dotwork-Linework / Mandala", "New school / Old school", "Watercolor"], selected: "Japonais" %>
-              </div>
+            <%= simple_form_for @project do |f| %>
+              <br>
+              <%= f.input :title, label:false, placeholder: "Titre Ex. : une chouette sur une branche de bambou" %>
+              <%= f.input :description, label:false, placeholder: "Description Ex. : la chouette doit être le sujet principal, avec des yeux transpersants" %>
+
+              <%= f.input :style, label:false, collection: ["Style", "Japonais", "Mots / Calligraphie", "Dessin", "Graphique / abstrait", "Tribal / Maori", "Bio-méchanique", "Dotwork-Linework / Mandala", "New school / Old school", "Watercolor"], selected: "Style" %>
               <h3 class="text-center black-policy">Dimensions du Tattoo</h3>
-                  <%= f.input :height  %>
-                  <%= f.input :width %>
-              <h3 class="text-center black-policy">Images d'inspiration</h3>
-              <div class="form-group">
-                <%= f.input :photos, as: :attachinary %>
-              </div>
-              <div class="form-group">
-                <%= f.input :price, collection: ["99", "199", "299"] %>
-              </div>
+                <div class="row">
+                <div class="col-xs-3 col-xs-offset-2">
 
-              <div class="form-group">
-                <%= f.button :submit, "Soumettre mon projet" , class: "btn btn-success btn-block" %>
-              </div>
+                  <%= f.input :height, label:false, placeholder:"hauteur" %>
+                </div>
+                <div class="col-xs-3 col-xs-offset-2">
+                  <%= f.input :width, label:false, placeholder:"largeur" %>
 
-         </div>
-       <% end %>
+                </div>
+                </div>
+                <h3 class=" black-policy">Images d'inspiration</h3>
+                <div class="classement">
+                  <%= f.input :photos, label:false, as: :attachinary %>
+                </div>
+                <%= f.input :price, label:false, collection: ["Choisir mon offre","99€", "199€ ", "299€"], selected:"Choisir mon offre" %>
+                <div class="classement">
+                  <%= f.button :submit, "Soumettre mon projet" , class: "btn btn-success btn-block" %>
+                </div>
+                <br>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

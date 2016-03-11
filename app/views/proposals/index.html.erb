@@ -3,7 +3,7 @@
 
       <% @proposals.each do |p| %>
         <br>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.amazingtattooideas.com/wp-content/uploads/2015/12/geometric-lines-chest-tattoo.jpg');">
+        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path p.photos.first.path if p.photos.any? %>');">
          <div class="card-description">
           <h2>
             <%="proposition de  #{p.user.first_name}"%>

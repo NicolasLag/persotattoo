@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
     charge = Stripe::Charge.create(
       customer: customer.id,
       amount:       @amount,  # in cents
-      description:  "Payment for teddy #{@order.project_sku} for order #{@order.id}",
+      description:  "Payment for project #{@order.project_sku} for order #{@order.id}",
       currency:     'eur'
     )
 
@@ -26,7 +26,7 @@ class PaymentsController < ApplicationController
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_order_payment_path(@order)
+    redirect_to new_order_payment_path(@order), notice: "Félicitations, votre concours est lancé !"
   end
 
   private

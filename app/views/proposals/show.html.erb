@@ -9,7 +9,6 @@
       <h3 style="color:white;"><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
       <p style="color:white;">Client (<%= @proposal.project.user.address_city %>)</p>
     </div>
-  </div>
 <% else %>
 <div class="container">
   <div class="profile-header-wrapper">
@@ -23,7 +22,7 @@
       <p style="color:white;">Artist (<%= @proposal.user.address_city %>)</p>
     </div>
   </div>
-
+</div>
 <% end %>
 
 <% @proposal.messages.each do |message| %>

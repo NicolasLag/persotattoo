@@ -37,12 +37,13 @@
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  margin-left: 20px;
 }
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #fff;
+  font-weight: bold;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {

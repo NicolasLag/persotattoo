@@ -2,4 +2,8 @@
 // All this logic will automatically be available in application.js.
 
 
-document.getElementById('stripe-auto').click();
+
+$(document).ready(function() {
+
+  $("#stripe-auto").click();
+});

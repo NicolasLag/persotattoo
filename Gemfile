@@ -28,6 +28,7 @@ gem 'money-rails'
 gem 'stripe'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'i18n-tasks'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment'

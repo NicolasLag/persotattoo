@@ -1,7 +1,7 @@
 class ProposalsController < ApplicationController
 
   before_action :set_proposal, only: [:show, :edit, :update, :destroy]
-  layout "dashboard", only: [:show]
+  layout "dashboard", only: [:show, :index]
 
   def index
     @proposals = Project.find(params[:project_id]).proposals

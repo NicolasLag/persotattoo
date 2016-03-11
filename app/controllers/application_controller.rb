@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
 
   def authenticate_user!(*arg)
-    session[:project] = Project.new(project_params) if params[:project]
+    if params[:project]
+      project = Project.create(project_params)
+      session[:project] = project.id
+    end
     redirect_to new_user_registration_path unless user_signed_in?
   end
 
@@ -36,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   def register_project
     return nil unless session[:project]
-    @project = Project.new(session[:project])
+    @project = Project.find(session[:project])
     @project.user = current_user
     order = Order.create!(amount: @project.price, state: 'pending')
     if @project.save

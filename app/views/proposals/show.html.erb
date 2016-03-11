@@ -1,24 +1,24 @@
 <% if current_user.artist %>
 
 
-<div class="profile-header-wrapper">
-  <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
-    <%= cl_image_tag @proposal.project.user.avatar.path, class: "avatar-large" %>
-    <h3><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
-    <p>Artist (<%= @proposal.project.user.address_city %>)</p>
-    <p><%= @proposal.project.user.presentation %></p>
-  </div>
-</div>
+    <div class="profile-header-wrapper">
+      <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
+        <%= cl_image_tag @proposal.project.user.avatar.path, class: "avatar-large" %>
+        <h3><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
+        <p>Artist (<%= @proposal.project.user.address_city %>)</p>
+        <p><%= @proposal.project.user.presentation %></p>
+      </div>
+    </div>
 
 <% else %>
 
-<div class="profile-header-wrapper">
-  <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
-    <%= cl_image_tag @proposal.user.avatar.path, class: "avatar-large" %>
-    <h3><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h3>
-    <p>Client (<%= @proposal.user.address_city %>)</p>
-  </div>
-</div>
+    <div class="profile-header-wrapper">
+      <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
+        <%= cl_image_tag @proposal.user.avatar.path, class: "avatar-large" %>
+        <h3><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h3>
+        <p>Client (<%= @proposal.user.address_city %>)</p>
+      </div>
+    </div>
 
 <% end %>
 
@@ -70,9 +70,9 @@
   <% end -%>
 <% end %>
 
-<%= simple_form_for [@proposal, @message] do |f| %>
-  <%= f.input :content, label: "Nouveau message" %>
-  <%= f.input :images, as: :attachinary %>
-  <%= f.button :submit, "Envoyer mon message", class: "btn btn-success btn-block"%>
+  <%= simple_form_for [@proposal, @message] do |f| %>
+    <%= f.input :content, label: "Nouveau message" %>
+    <%= f.input :images, as: :attachinary %>
+    <%= f.button :submit, "Envoyer mon message", class: "btn btn-success btn-block"%>
 
 <% end %>

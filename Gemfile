@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '4.2.5.1'
-gem 'puma'
+gem 'thin'
 gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
@@ -36,7 +36,7 @@ end
 
 group :development, :test do
   gem 'binding_of_caller'
-  gem 'better_errors'
+  gem 'better_errors', github: "charliesome/better_errors"
   gem 'quiet_assets'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -46,4 +46,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'puma'
 end

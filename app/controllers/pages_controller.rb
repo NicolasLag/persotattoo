@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def me_artist
     @projects = Project.not_blacklisted(current_user)
+    @proposal = Proposal.new
   end
 
   def sign_up_artist

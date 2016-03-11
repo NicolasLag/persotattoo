@@ -1,32 +1,39 @@
 <% if current_user.artist %>
-
-
-<div class="profile-header-wrapper">
-  <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
-    <%= cl_image_tag @proposal.project.user.avatar.path, class: "avatar-large" %>
-    <h3><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
-    <p>Artist (<%= @proposal.project.user.address_city %>)</p>
-    <p><%= @proposal.project.user.presentation %></p>
+  <div class="profile-header-wrapper">
+    <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
+      <% if @proposal.project.user.avatar? %>
+        <%= cl_image_tag @proposal.project.user.avatar.path, class: "avatar-large" %>
+      <%else%>
+        <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% end %>
+      <h3><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
+      <p>Client (<%= @proposal.project.user.address_city %>)</p>
+    </div>
   </div>
-</div>
-
 <% else %>
-
-<div class="profile-header-wrapper">
-  <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
-    <%= cl_image_tag @proposal.user.avatar.path, class: "avatar-large" %>
-    <h3><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h3>
-    <p>Client (<%= @proposal.user.address_city %>)</p>
+<div class="container">
+  <div class="profile-header-wrapper">
+    <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
+      <% if @proposal.user.avatar? %>
+        <%= cl_image_tag @proposal.user.avatar.path, class: "avatar-large" %>
+      <%else%>
+        <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% end %>
+      <h3><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h3>
+      <p>Artist (<%= @proposal.user.address_city %>)</p>
+    </div>
   </div>
-</div>
-
 <% end %>
 
 <% @proposal.messages.each do |message| %>
   <% if message.user == current_user %>
     <div class="media">
       <div class="media-left">
+      <% if message.user.avatar? %>
         <%= cl_image_tag message.user.avatar.path, width: 100, height:  100, crop: :fill, class: "avatar-large" %>
+      <% else %>
+        <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% end %>
       </div>
       <div class="media-body message">
         <div class="bubble bubble-left" style="color:white;">
@@ -43,19 +50,15 @@
         </div>
       </div>
     </div>
-
-
   <% else %>
-
-
     <div class="media">
       <div class="media-body message">
-        <div class="bubble bubble-right" style="color:white;">
-          <%= message.content %>
-          <br>
-          <font size="2">(<i><%= message.created_at.to_formatted_s(:short) %></i>)</font>
-        </div>
-        <div>
+         <div class="bubble bubble-right" style="color:white;">
+           <%= message.content %>
+           <br>
+           <font size="2">(<i><%= message.created_at.to_formatted_s(:short) %></i>)</font>
+         </div>
+         <div>
           <% message.images.each do |image| %>
             <% link_to image.path, class: "swipebox" do %>
               <%= cl_image_tag image.path, width: 50, height:  50, crop: :fill %>
@@ -64,7 +67,11 @@
         </div>
       </div>
       <div class="media-right">
+      <% if message.user.avatar? %>
         <%= cl_image_tag message.user.avatar.path, width: 100, height:  100, crop: :fill, class: "avatar-large" %>
+      <% else %>
+        <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% end %>
       </div>
     </div>
   <% end -%>
@@ -74,5 +81,4 @@
   <%= f.input :content, label: "Nouveau message" %>
   <%= f.input :images, as: :attachinary %>
   <%= f.button :submit, "Envoyer mon message", class: "btn btn-success btn-block"%>
-
 <% end %>

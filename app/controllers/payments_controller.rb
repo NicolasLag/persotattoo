@@ -26,7 +26,7 @@ class PaymentsController < ApplicationController
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_order_payment_path(@order), notice: "Félicitations, votre concours est lancé !"
+    redirect_to new_order_payment_path(@order), notice: "Félicitations, votre concours est lancé   !"
   end
 
   private

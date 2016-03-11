@@ -6,6 +6,7 @@ class ProposalsController < ApplicationController
   def index
     @proposals = Project.find(params[:project_id]).proposals
     @message = Message.new
+    @proposal = Proposal.new
   end
 
 

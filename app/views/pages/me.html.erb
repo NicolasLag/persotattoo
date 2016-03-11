@@ -2,19 +2,19 @@
   <h1>Mes projets</h1>
   <%= link_to "<<< Créer un projet", new_project_path, class:"btn btn-success"%>
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <% @projects.each do |project| %>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.photos.first.path if project.photos.any? %>')">
+    <% @projects.each do |project| %>
+    <div class="col-xs-12 col-sm-6 ">
+      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.photos.first.path if project.photos.any? %>')">
 
-          <div class="card-description">
-            <h3><%= project.title %></h3>
-            <p><i><%= project.style %></i></p>
-            <h2>
+        <div class="card-description">
+          <h3><%= project.title %></h3>
+          <p><i><%= project.style %></i></p>
+          <h2>
             <%= link_to pluralize(project.proposals.count,'proposition'), project_proposals_path(project), {class:"label label-success text-align-center"} if project.proposals.count>0 %>
-            </h2>
-          </div>
+          </h2>
+        </div>
       </div>
-
+    </div>
     <% end %>
   </div>
 </div>

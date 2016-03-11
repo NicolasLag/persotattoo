@@ -14,7 +14,7 @@ fr:
     - ven
     - sam
     abbr_month_names:
-    - 
+    -
     - jan.
     - fév.
     - mar.
@@ -40,7 +40,7 @@ fr:
       long: "%e %B %Y"
       short: "%e %b"
     month_names:
-    - 
+    -
     - janvier
     - février
     - mars
@@ -245,9 +245,9 @@ fr:
       sign_up: Sign up
   shared:
     navbar:
-      profile: Profile
-      sign_in: Sign in
-      sign_out: Sign out
+      profile:
+      sign_in: Se connecter
+      sign_out:
   support:
     array:
       last_word_connector: " et "

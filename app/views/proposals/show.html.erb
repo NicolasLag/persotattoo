@@ -1,16 +1,16 @@
 <% if current_user.artist %>
-<<<<<<< HEAD
-  <div class="profile-header-wrapper">
-    <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
-      <% if @proposal.project.user.avatar? %>
-        <%= cl_image_tag @proposal.project.user.avatar.path, class: "avatar-large" %>
-      <%else%>
-        <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% end %>
-      <h3><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
-      <p>Client (<%= @proposal.project.user.address_city %>)</p>
+
+    <div class="profile-header-wrapper">
+      <div class="container profile-header-container text-center" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @proposal.photos.first.path if @proposal.photos.any? %>')">
+        <% if @proposal.project.user.avatar? %>
+          <%= cl_image_tag @proposal.project.user.avatar.path, class: "avatar-large" %>
+        <%else%>
+          <%= cl_image_tag "https://freeiconshop.com/files/edd/person-solid.png", size: "30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% end %>
+        <h3><%= @proposal.project.user.first_name %> <%= @proposal.project.user.last_name %></h3>
+        <p>Client (<%= @proposal.project.user.address_city %>)</p>
+      </div>
     </div>
-  </div>
 <% else %>
 <div class="container">
   <div class="profile-header-wrapper">
@@ -24,7 +24,7 @@
       <p>Artist (<%= @proposal.user.address_city %>)</p>
     </div>
   </div>
-
+</div>
 <% end %>
 
 <% @proposal.messages.each do |message| %>

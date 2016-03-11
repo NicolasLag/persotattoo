@@ -1,9 +1,7 @@
 
-;( function( $ ) {
-
+( function( $ ) {
   $( '.swipebox' ).swipebox();
-
-} )( jQuery );
+})( jQuery );
 
 document.getElementById("portfolio").addEventListener("click", function(event){
     event.preventDefault();

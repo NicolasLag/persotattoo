@@ -1,7 +1,8 @@
 <div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://drscdn.500px.org/photo/109541019/q%3D80_h%3D450/9aa2b5b2b010269d3266c958cbaa8fe6');">
   <div class="container">
       <div class="col-sm-4 col-sm-offset-4 card-devise">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            <h2> Votre projet a été soumis. Pour le finaliser, passez au payment</h2>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="stripe-auto"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-image="<%= asset_path "tatoo.jpg"%>"
               data-name="PersoTattoo"

@@ -1,18 +1,19 @@
 <!-- Banner with search buttons  -->
 <div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_path "tatoo.jpg"%>);">
   <div class="banner-content">
-    <h1>Bienvenue chez PersoTattoo</h1>
-    <p>Enjoy worldwide quality.</p>
+  <div class="container">
+    <h1>Réalisez le tatouage de vos rêves</h1>
+    <p>Lancez votre coucours et obtenez votre tatouage personnalisé dessiné par les meilleurs artistes du monde entier</p>
     <!-- <a class="btn btn-primary btn-lg">GET IT</a> -->
-
+</div>
 
     <div class="home-cta">
       <% if user_signed_in? %>
 
           <% if current_user.artist == false %>
-            <%= link_to "Obtenir mon tattoo personnalisé", me_path, class: "btn-cta-customer" %>
+            <%= link_to "J'envoie mon projet", me_path, class: "btn-cta-customer" %>
           <% else %>
-            <%= link_to "Obtenir mon tattoo personnalisé", me_artist_path, class: "btn-cta-customer" %>
+            <%= link_to "J'envoie mon projet", me_artist_path, class: "btn-cta-customer" %>
           <% end %>
           <% if current_user.artist == false %>
             <%= link_to "Je suis un artiste", me_path, class: "btn-cta-artist" %>
@@ -22,7 +23,7 @@
 
         <% else %>
 
-          <%= link_to "Obtenir mon tattoo personnalisé", new_project_path, class: "btn-cta-customer" %>
+          <%= link_to "J'envoie mon projet", new_project_path, class: "btn-cta-customer" %>
           <%= link_to "Je suis un artiste", sign_up_artist_path, class: "btn-cta-artist" %>
 
       <% end %>
